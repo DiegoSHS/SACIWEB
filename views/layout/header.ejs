@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejemplo de aplicación</title>
+    <link rel="stylesheet" href="/public/css/ocultar.css">
+    <link rel="stylesheet" href="/public/css/chart.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" onclick="muestraTabs(event,'inicio')">SACI</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Grafica
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a onclick="muestraTabs(event,'grafica_Aire')" class="dropdown-item" href="#">Aire</a></li>
+                  <li><a onclick="muestraTabs(event,'grafica_Suelo')"class="dropdown-item" href="#">Suelo</a></li>
+                  <li><a onclick="muestraTabs(event,'grafica_Conductividad')"class="dropdown-item" href="#">Conductividad</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" onclick="muestraTabs(event,'reporte')">Reporte</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>

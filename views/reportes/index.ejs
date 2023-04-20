@@ -1,0 +1,62 @@
+<%- include('../layout/header'); %>
+
+    <div class="container">
+        <div id="chart">
+        </div>
+
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((item) => { %>
+                    <tr>
+                        <td><%= item.date %></td>
+                        <td><%= item.value %></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        
+    </div>
+
+    
+
+    <script>
+        var options = {
+        chart: {
+        height: 280,
+        type: "area"
+        },
+        dataLabels: {
+        enabled: false
+        },
+        series: [
+        {
+            name: "Temperatura - Suelo",
+            data: <%- JSON.stringify(values) %>,
+        },
+        ],
+        fill: {
+        type: "gradient",
+        gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.7,
+            opacityTo: 0.9,
+            stops: [0, 90, 100]
+        }
+        },
+        xaxis: {
+        categories: 
+            <%- JSON.stringify(times) %>,
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+    </script>
+
+<%- include('../layout/footer'); %>
