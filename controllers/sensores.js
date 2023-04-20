@@ -7,8 +7,7 @@ exports.index = async (req, res) => {
         const interfaces = await db.collection("sensors")
             .find()
             .toArray()
-
-        res.json(interfaces)
+        return res.status(200).json(interfaces)
     } catch (error) {
         console.error(error)
         return res.status(503)
@@ -32,7 +31,7 @@ exports.add = async (req, res) => {
             name, description, interface, area, module, min, max, type_measurement, manipulated, status
         })
 
-        res.status(201).json({
+        return res.status(201).json({
             message: 'El producto fue creado correctamente.',
             dato
         })
@@ -52,9 +51,7 @@ exports.show = async (req, res) => {
     let collection = await db.collection("sensors")
     let query = { _id: ObjectId(req.params.id) }
     let result = await collection.findOne(query)
-
-    if (!result) res.send("Not found").status(404)
-    else res.send(result).status(200);
+    return (result ? res.send(result).status(200) : res.send("Not found").status(404))
 }
 
 exports.update = async (req, res) => {
@@ -76,7 +73,7 @@ exports.update = async (req, res) => {
                 _id: new ObjectId(id)
             }, update)
 
-        res.json({
+        return res.status(200).json({
             mesage: "El modulo fue actualizado",
             modules
         }

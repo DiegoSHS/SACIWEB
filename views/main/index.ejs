@@ -1,18 +1,38 @@
 <%- include('../layout/header'); %>
+    <header class="content header">
+        <h1 class="title">Inicio</h1>
+        <p>El control de variables ambientales es de vital importancia, ya que al igual que la temperatura, la mejor respuesta del cultivo solo puede lograrse dentro de un cierto rango de humedad y éste depende de la especie cultivada.</p>
+        <div class="btn-home">
+            <a href="https://www.floresyplantas.net/control-climatico-en-invernaderos/" class="btn btn-success">Saber mas</a>
+        </div>
+    </header>
 
-    <section id="inicio" class="tabcontent">
-        <div class="container">
-            <h1>Para el uso correcto de esta herramienta web se necesita seguir las siguientes instrucciones.</h1>
-            <h4>- Para visualizar una grafica necesitas selecionar la opción Grafica que se encuentra en la barra de navegación y selecionar el sensor para ver sus estadisticas.</h4>
-            <h4>- Para el reporte el usuario debera seleccionar la opción Reporte que se encuentra en la barra de navegación, cuando estes en ese apartado podras visualizar tres filtros:</h4>
-            <ul>
-                <li><p><strong>Fecha: </strong>para ver los registros de tal dia-mes-año.</p></li>
-                <li><p><strong>Modulo: </strong> para seleccionar el modulo que desea ver en los diferentes sensores.</p></li>
-                <li><p><strong>Sensor:</strong> para seleccionar el sensor y visualizar los datos.</p></li>
-            </ul>
-        </div> 
-    </section>  
-    
+    <section class="content about">
+        <h2 class="title">SACI</h2>
+        <p>Sistema Automatizado para Cultivos de Invernadero es un sistema enfocado en el monitoreo y control de manera remota con el fin de crear las condiciones más favorables para el cultivo del invernadero que se encuentra dentro de las intalaciones
+            de la Universidad Tecnológica de Izúcar de Matamoros, creando así las mejores condiciones para que el cultivo pueda desarrollarse de manera favorable.</p>
+        <div>
+            <img class="imagenes" src="../../public/img/invernadero.jpg" width="200px" height="150px">
+            <img class="imagenes" src="../../public/img/inver.jpg" width="200px" height="150px">
+        </div>
+
+        <a href="https://docs.google.com/document/d/1gijRCwCevXZpkcWHgRsd41LaIRjK4j-Y/edit" class="btn btn-success">Mas información</a>
+    </section>
+
+    <section class="content contact">
+        <h2 class="title">Contacto</h2>
+        <p>2441047702</p>
+        <p> Reforma 168, Campestre la Paz, 74420 Izúcar de Matamoros, Pue.</p>
+        <p>proyectsaci@gmail.com</p>
+    </section>
+
+
+
+
+
+
+
+
     <section id="grafica_Aire" class="tabcontent">
         <div class="container">
             <div class="row row">
@@ -21,16 +41,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datat1.map((item) => item.name) %></h4>
-                        <h4>description: <%- datat1.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datat1.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datat1.map((item) => item.area) %></h4>
-                        <h4>module: <%- datat1.map((item) => item.module) %></h4>
-                        <h4>min: <%- datat1.map((item) => item.min) %></h4>
-                        <h4>max: <%- datat1.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datat1.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datat1.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datat1.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datat1.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datat1.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datat1.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datat1.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datat1.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datat1.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datat1.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datat1.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datat1.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datat1.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
                 <div class="col border">
@@ -38,16 +78,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datah1.map((item) => item.name) %></h4>
-                        <h4>description: <%- datah1.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datah1.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datah1.map((item) => item.area) %></h4>
-                        <h4>module: <%- datah1.map((item) => item.module) %></h4>
-                        <h4>min: <%- datah1.map((item) => item.min) %></h4>
-                        <h4>max: <%- datah1.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datah1.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datah1.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datah1.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datah1.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datah1.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datah1.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datah1.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datah1.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datah1.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datah1.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datah1.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datah1.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datah1.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
                 <div class="col border">
@@ -55,16 +115,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datar.map((item) => item.name) %></h4>
-                        <h4>description: <%- datar.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datar.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datar.map((item) => item.area) %></h4>
-                        <h4>module: <%- datar.map((item) => item.module) %></h4>
-                        <h4>min: <%- datar.map((item) => item.min) %></h4>
-                        <h4>max: <%- datar.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datar.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datar.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datar.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datar.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datar.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datar.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datar.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datar.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datar.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datar.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datar.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datar.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datar.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
             </div>
@@ -79,16 +159,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datah2.map((item) => item.name) %></h4>
-                        <h4>description: <%- datah2.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datah2.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datah2.map((item) => item.area) %></h4>
-                        <h4>module: <%- datah2.map((item) => item.module) %></h4>
-                        <h4>min: <%- datah2.map((item) => item.min) %></h4>
-                        <h4>max: <%- datah2.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datah2.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datah2.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datah2.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datah2.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datah2.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datah2.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datah2.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datah2.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datah2.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datah2.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datah2.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datah2.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datah2.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
                 <div class="col border">
@@ -96,16 +196,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datap.map((item) => item.name) %></h4>
-                        <h4>description: <%- datap.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datap.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datap.map((item) => item.area) %></h4>
-                        <h4>module: <%- datap.map((item) => item.module) %></h4>
-                        <h4>min: <%- datap.map((item) => item.min) %></h4>
-                        <h4>max: <%- datap.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datap.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datap.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datap.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datap.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datap.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datap.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datap.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datap.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datap.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datap.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datap.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datap.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datap.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
                 <div class="col border">
@@ -113,16 +233,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datat2.map((item) => item.name) %></h4>
-                        <h4>description: <%- datat2.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datat2.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datat2.map((item) => item.area) %></h4>
-                        <h4>module: <%- datat2.map((item) => item.module) %></h4>
-                        <h4>min: <%- datat2.map((item) => item.min) %></h4>
-                        <h4>max: <%- datat2.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datat2.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datat2.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datat2.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datat2.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datat2.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datat2.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datat2.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datat2.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datat2.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datat2.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datat2.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datat2.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datat2.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
             </div>
@@ -137,16 +277,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- dataca.map((item) => item.name) %></h4>
-                        <h4>description: <%- dataca.map((item) => item.description) %></h4>
-                        <h4>interface: <%- dataca.map((item) => item.interface) %></h4>
-                        <h4>area: <%- dataca.map((item) => item.area) %></h4>
-                        <h4>module: <%- dataca.map((item) => item.module) %></h4>
-                        <h4>min: <%- dataca.map((item) => item.min) %></h4>
-                        <h4>max: <%- dataca.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- dataca.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- dataca.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- dataca.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- dataca.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- dataca.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- dataca.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- dataca.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- dataca.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- dataca.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- dataca.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- dataca.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- dataca.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- dataca.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
                 <div class="col border">
@@ -154,16 +314,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- datail.map((item) => item.name) %></h4>
-                        <h4>description: <%- datail.map((item) => item.description) %></h4>
-                        <h4>interface: <%- datail.map((item) => item.interface) %></h4>
-                        <h4>area: <%- datail.map((item) => item.area) %></h4>
-                        <h4>module: <%- datail.map((item) => item.module) %></h4>
-                        <h4>min: <%- datail.map((item) => item.min) %></h4>
-                        <h4>max: <%- datail.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- datail.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- datail.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- datail.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- datail.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- datail.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- datail.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- datail.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- datail.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- datail.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- datail.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- datail.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- datail.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- datail.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
                 <div class="col border">
@@ -171,16 +351,36 @@
                     </div>
                     <section class="pos">
                         <h3>Información del sensor</h3>
-                        <h4>name: <%- dataCo2.map((item) => item.name) %></h4>
-                        <h4>description: <%- dataCo2.map((item) => item.description) %></h4>
-                        <h4>interface: <%- dataCo2.map((item) => item.interface) %></h4>
-                        <h4>area: <%- dataCo2.map((item) => item.area) %></h4>
-                        <h4>module: <%- dataCo2.map((item) => item.module) %></h4>
-                        <h4>min: <%- dataCo2.map((item) => item.min) %></h4>
-                        <h4>max: <%- dataCo2.map((item) => item.max) %></h4>
-                        <h4>type_measurement: <%- dataCo2.map((item) => item.type_measurement) %></h4>
-                        <h4>manipulated: <%- dataCo2.map((item) => item.manipulated) %></h4>
-                        <h4>status: <%- dataCo2.map((item) => item.status) %></h4>
+                        <h4>name:
+                            <%- dataCo2.map((item) => item.name) %>
+                        </h4>
+                        <h4>description:
+                            <%- dataCo2.map((item) => item.description) %>
+                        </h4>
+                        <h4>interface:
+                            <%- dataCo2.map((item) => item.interface) %>
+                        </h4>
+                        <h4>area:
+                            <%- dataCo2.map((item) => item.area) %>
+                        </h4>
+                        <h4>module:
+                            <%- dataCo2.map((item) => item.module) %>
+                        </h4>
+                        <h4>min:
+                            <%- dataCo2.map((item) => item.min) %>
+                        </h4>
+                        <h4>max:
+                            <%- dataCo2.map((item) => item.max) %>
+                        </h4>
+                        <h4>type_measurement:
+                            <%- dataCo2.map((item) => item.type_measurement) %>
+                        </h4>
+                        <h4>manipulated:
+                            <%- dataCo2.map((item) => item.manipulated) %>
+                        </h4>
+                        <h4>status:
+                            <%- dataCo2.map((item) => item.status) %>
+                        </h4>
                     </section>
                 </div>
             </div>
@@ -195,7 +395,7 @@
                 </div>
                 <div class="col">
                     <input type="date" class="p-1 mb-1 bg-primary text-white">
-                </div>    
+                </div>
             </div>
 
             <br>
@@ -227,43 +427,43 @@
 
             <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Medicion</th>
-                    <th scope="col">Valor</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Medicion</th>
+                        <th scope="col">Valor</th>
+                    </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th>13-04-2023</th>
-                    <td>12:0:0</td>
-                    <td>%</td>
-                    <td scope="row">23</td>
-                  </tr>
-                  <tr>
-                    <th>13-04-2023</th>
-                    <td>12:0:0</td>
-                    <td>%</td>
-                    <td scope="row">23</td>
-                  </tr>
-                  <tr>
-                    <th>13-04-2023</th>
-                    <td>12:0:0</td>
-                    <td>%</td>
-                    <td scope="row">23</td>
-                  </tr>
+                    <tr>
+                        <th>13-04-2023</th>
+                        <td>12:0:0</td>
+                        <td>%</td>
+                        <td scope="row">23</td>
+                    </tr>
+                    <tr>
+                        <th>13-04-2023</th>
+                        <td>12:0:0</td>
+                        <td>%</td>
+                        <td scope="row">23</td>
+                    </tr>
+                    <tr>
+                        <th>13-04-2023</th>
+                        <td>12:0:0</td>
+                        <td>%</td>
+                        <td scope="row">23</td>
+                    </tr>
                 </tbody>
-              </table>
+            </table>
 
-             <br>
-             
-             <div class="row row">
+            <br>
+
+            <div class="row row">
                 <div class="col">
                     <button type="button" class="btn btn-warning">Imprimir</button>
-                </div>  
+                </div>
             </div>
         </div>
     </section>
 
-<%- include('../layout/footer'); %>
+    <%- include('../layout/footer'); %>
