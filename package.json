@@ -1,11 +1,11 @@
 {
   "name": "proyecto",
   "version": "1.0.0",
-  "description": "App web de saci",
+  "description": "Repaso, para la creacion de un nuevo proyeto",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "author": "David",
   "license": "ISC",
