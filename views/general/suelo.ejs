@@ -1,0 +1,54 @@
+<%- include('../layout/header2'); %>
+
+
+
+
+<!-- Div general-->
+<div class="container">
+
+    <div class="row d-flex align-items-center justify-content-center" style="height:100vh;">
+    
+    <div class="col-md-7" >
+        <div id="chart-1" ></div>
+    </div>
+    
+</div>
+
+</div><!-- Div general-->
+
+<script>
+    var options = {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: '<%= title %>'
+        },
+
+
+        
+        series: [
+            
+                <%- JSON.stringify(serie) %>
+            
+        ],
+        xaxis: {
+            categories: <%- JSON.stringify(hour) %>
+        },
+        yaxis: {
+            forceNiceScale: true,
+            max:100,
+            labels: {
+                formatter: function (value) {
+                    return value + "%";
+                }
+            }
+        }
+        
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart-1"), options);
+    chart.render();
+</script>
+
+<%- include('../layout/footer2'); %>

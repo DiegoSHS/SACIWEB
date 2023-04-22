@@ -1,0 +1,68 @@
+<%- include('../layout/header2'); %>
+
+<!-- Div general-->
+<div class="container">
+
+  <div class="row d-flex align-items-center justify-content-center" style="height:100vh;">
+
+    <div class="col-md-4 mx-3">
+      <div id="chart-1"></div>
+      <button class="btn btn-primary mt-3">Botón 1</button>
+    </div>
+
+    <div class="col-md-4 mx-3">
+      <div id="chart-2"></div>
+      <button class="btn btn-primary mt-3">Botón 2</button>
+    </div>
+
+    <div class="col-md-4 mx-3">
+      <div id="chart-3"></div>
+      <button class="btn btn-primary mt-3">Botón 3</button>
+    </div>
+
+  </div>
+<br><br>
+</div><!-- Div general-->
+
+<script>
+  var options1 = {
+  chart: {
+    type: 'line'
+  },
+  title: {
+    text: '<%= title %>'
+  },
+  series: [
+    <%- JSON.stringify(serie) %>
+  ],
+  xaxis: {
+    categories: <%- JSON.stringify(hour) %>,
+    labels: {
+      style: {
+        fontSize: '5px'
+      }
+    }
+  },
+  yaxis: {
+    forceNiceScale: true,
+    max:100,
+    labels: {
+      formatter: function (value) {
+        return value + "%";
+      },
+      style: {
+        fontSize: '5px'
+      }
+    }
+  }
+};
+
+  var chart = new ApexCharts(document.querySelector("#chart-1"), options1);
+  var chart2 = new ApexCharts(document.querySelector("#chart-2"), options1);
+  var chart3 = new ApexCharts(document.querySelector("#chart-3"), options1);
+  chart.render();
+  chart2.render();
+  chart3.render();
+</script>
+
+<%- include('../layout/footer2'); %>
