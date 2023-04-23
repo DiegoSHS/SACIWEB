@@ -11,7 +11,7 @@ exports.index = async (req, res) =>{
     const sensorT1 = await db.collection("sensors")
     .find({id: "temperatura1"})
     .toArray();
-    const temperatura = await db.collection("log")
+    const temperatura = await db.collection("logs")
     .find({id: "temperatura1"})
     .toArray();
 
@@ -25,49 +25,49 @@ exports.index = async (req, res) =>{
     const sensorH1 = await db.collection("sensors")
     .find({id: "humedad1"})
     .toArray();
-    const humedad = await db.collection("log")
+    const humedad = await db.collection("logs")
     .find({id: "humedad1"})
     .toArray();
 
     const sensorH2 = await db.collection("sensors")
     .find({id: "humedad2"})
     .toArray();
-    const humedad2 = await db.collection("log")
+    const humedad2 = await db.collection("logs")
     .find({id: "humedad2"})
     .toArray();
 
     const sensorr = await db.collection("sensors")
     .find({id: "radiacion"})
     .toArray();
-    const radiacion = await db.collection("log")
+    const radiacion = await db.collection("logs")
     .find({id: "radiacion"})
     .toArray();
 
     const sensorp = await db.collection("sensors")
     .find({id: "ph"})
     .toArray();
-    const pH = await db.collection("log")
+    const pH = await db.collection("logs")
     .find({id: "ph"})
     .toArray();
 
     const sensorca = await db.collection("sensors")
     .find({id: "ca"})
     .toArray();
-    const ca = await db.collection("log")
+    const ca = await db.collection("logs")
     .find({id: "ca"})
     .toArray();
 
     const sensoril = await db.collection("sensors")
     .find({id: "il"})
     .toArray();
-    const il = await db.collection("log")
+    const il = await db.collection("logs")
     .find({id: "il"})
     .toArray();
 
     const sensorCo2 = await db.collection("sensors")
     .find({id: "Co2"})
     .toArray();
-    const Co2 = await db.collection("log")
+    const Co2 = await db.collection("logs")
     .find({id: "Co2"})
     .toArray();
 
