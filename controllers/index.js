@@ -18,7 +18,7 @@ exports.index = async (req, res) =>{
     const sensorT2 = await db.collection("sensors")
     .find({id: "temperatura2"})
     .toArray();
-    const temperatura2 = await db.collection("log")
+    const temperatura2 = await db.collection("logs")
     .find({id: "temperatura2"})
     .toArray();
 
