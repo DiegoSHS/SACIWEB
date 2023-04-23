@@ -10,7 +10,8 @@ exports.index = async (req, res) => {
         const aggregations = (id) => {
             return interfaces.aggregate([
                 { $match: { id:id } },
-                { $sort: { date: 1 }},
+                { $sort: { date: 1, hour: 1 } },
+                { $project: {_id:0}}
             ])
         }
         const logs = ids.map((n) => aggregations(n))
