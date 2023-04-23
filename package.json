@@ -4,8 +4,9 @@
   "description": "Repaso, para la creacion de un nuevo proyeto",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "test": "node index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "David",
   "license": "ISC",
