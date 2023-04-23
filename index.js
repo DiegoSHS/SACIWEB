@@ -16,12 +16,12 @@ app.use('/', router());
 
 dbo.connectToServer((error) =>{
     if(error){
-        console.error(error);
-
-        process.exit();
+        console.error(error)
+        process.exit(1)
+        return false
     }
+    app.listen(process.env.PORT, () => {
+        console.log(`${process.env.PORT}`)
+    })
 })
 
-app.listen(process.env.PORT, () => {
-    console.log(`${process.env.PORT}`);
-});
