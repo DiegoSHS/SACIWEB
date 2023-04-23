@@ -1,33 +1,42 @@
 <%- include('../layout/header2'); %>
 
 <!-- Div general-->
-<div class="container">
+<div class="container" style="margin-top: 2%;">
+
+  <h1 class="text-center">Estado: Aire</h1>
 
   <div class="row d-flex align-items-center justify-content-center" style="height:100vh;">
 
-    <div class="col-md-4 mx-3">
-      <div id="chart-1"></div>
-      <button class="btn btn-primary mt-3">Botón 1</button>
+    <div class="col-md-6 mx-6" style="margin-top: 5%;">
+      <div class="position-relative">
+        <div id="chart-1"></div>
+        <a class="btn btn-primary position-absolute bottom-1  end-0" href="#">Ver grafica detallada</a><!-- En el href ponen las rutas a sus graficas especificas-->
+      </div>
     </div>
-
-    <div class="col-md-4 mx-3">
-      <div id="chart-2"></div>
-      <button class="btn btn-primary mt-3">Botón 2</button>
+    
+    <div class="col-md-6 mx-6" style="margin-top: 5%;">
+      <div class="position-relative">
+        <div id="chart-2"></div>
+        <a class="btn btn-primary position-absolute bottom-1 end-0 " href="#">Ver grafica detallada</a><!-- En el href ponen las rutas a sus graficas especificas-->
+      </div>
     </div>
-
-    <div class="col-md-4 mx-3">
-      <div id="chart-3"></div>
-      <button class="btn btn-primary mt-3">Botón 3</button>
+    
+    <div class="col-md-6 mx-6" style="margin-top: 10%;">
+      <div class="position-relative">
+        <div id="chart-3"></div>
+        <a class="btn btn-primary position-absolute bottom-1 end-0" href="#">Ver grafica detallada</a><!-- En el href ponen las rutas a sus graficas especificas-->
+      </div>
     </div>
 
   </div>
-<br><br>
+  <br><br><br><br><br><br><br><br><br><br>
 </div><!-- Div general-->
 
 <script>
   var options1 = {
   chart: {
-    type: 'line'
+    type: 'line',
+    width: '100%'
   },
   title: {
     text: '<%= title %>'
@@ -44,8 +53,9 @@
     }
   },
   yaxis: {
-    forceNiceScale: true,
-    max:100,
+    forceNiceScale: false,
+    max: 100,
+    min:0,
     labels: {
       formatter: function (value) {
         return value + "%";
@@ -60,6 +70,8 @@
   var chart = new ApexCharts(document.querySelector("#chart-1"), options1);
   var chart2 = new ApexCharts(document.querySelector("#chart-2"), options1);
   var chart3 = new ApexCharts(document.querySelector("#chart-3"), options1);
+  chart.render
+
   chart.render();
   chart2.render();
   chart3.render();

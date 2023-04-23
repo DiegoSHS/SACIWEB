@@ -2,7 +2,7 @@ let ver = () =>{
     document.getElementById("inicio").style.display = "block";
 }
 
-(ver)();
+(ver)(); 
 
 function muestraTabs(evt,seccion){
     var i, tabcontent, tablinks;
