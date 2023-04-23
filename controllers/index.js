@@ -4,7 +4,7 @@ exports.index = async (req, res) =>{
 
     const db = dbo.getDb();
 
-    const interfaces = await db.collection("log")
+    const interfaces = await db.collection("logs")
     .find()
     .toArray();
 
