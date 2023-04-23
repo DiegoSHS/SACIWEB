@@ -15,7 +15,8 @@ exports.index = async (req, res) => {
             ])
         }
         const logs = ids.map((n) => aggregations(n))
-        const sensorLogs = await Promise.allSettled(logs)
+        const promises = await Promise.allSettled(logs)
+        const sensorLogs = promises.map(({value}) => value)
         return res.status(200).json(sensorLogs)
     } catch (error) {
         console.error(error)
