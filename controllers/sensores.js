@@ -21,22 +21,18 @@ exports.add = async (req, res) => {
     try {
         const db = dbo.getDb();
         const interfaces = await db.collection("sensors");
-
         const {
             body: {
-                name, description, interface, area, module, min, max, type_measurement, manipulated, status
+                name, description, interface, module, min, max, status, pin
             }
         } = req
         const dato = await interfaces.insertOne({
-            name, description, interface, area, module, min, max, type_measurement, manipulated, status
+            name, description, interface, module, min, max, status, pin
         })
-
         return res.status(201).json({
             message: 'El producto fue creado correctamente.',
             dato
         })
-
-
     } catch (error) {
         console.error(error)
         return res.status(503)
@@ -59,25 +55,23 @@ exports.update = async (req, res) => {
         const {
             params: { id },
             body: {
-                name, description, interface, area, module, min, max, type_measurement, manipulated, status
+                name, description, interface, module, min, max, status, pin
             }
         } = req
         const db = dbo.getDb()
-        const update = {
-            $set: {
-                name, description, interface, area, module, min, max, type_measurement, manipulated, status
-            }
-        }
         const modules = await db.collection("sensors")
             .updateOne({
                 _id: new ObjectId(id)
-            }, update)
-
-        return res.status(200).json({
+            }, {
+                $set: {
+                    name, description, interface, module, min, max, status, pin
+                }
+            })
+        return res.status(201).json({
             mesage: "El modulo fue actualizado",
             modules
         }
-        );
+        )
     } catch (error) {
         console.error(error)
         return res.status(503)
