@@ -7,9 +7,9 @@ exports.index = async (req, res) => {
 
         const log = await db.collection("logs").find({}).toArray();
 
-        const filtro1 = log.filter(element => element.id === "temperatura_aire");
-        const filtro2 = log.filter(element => element.id === "humedad_aire");
-        const filtro3 = log.filter(element => element.id === "radiacion_solar_aire");
+        const filtro1 = log.filter(element => element.id === "temperatura_suelo");
+        const filtro2 = log.filter(element => element.id === "humedad_suelo");
+        const filtro3 = log.filter(element => element.id === "ph_suelo");
 
         res.render('general/suelo',
             {
@@ -35,14 +35,14 @@ exports.index = async (req, res) => {
                     data: filtro2.map(({ value }) => value)
                 },
 
-                title2: "Radiación solar",
+                title2: "PH",
                 data2: filtro3,
                 value2: filtro3.map(({ value }) => value),
                 date2: filtro3.map(({ date }) => date),
                 hour2: filtro3.map(({ hour }) => hour),
 
                 serie2: {
-                    name: "Radiación solar",
+                    name: "PH",
                     data: filtro3.map(({ value }) => value)
                 }
             })
