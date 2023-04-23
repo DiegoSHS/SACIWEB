@@ -7,11 +7,11 @@ exports.index = async (req, res) => {
 
         const log = await db.collection("logs").find({}).toArray();
 
-        const filtro1 = log.filter(element => element.id === "temperatura");
-        const filtro2 = log.filter(element => element.id === "humedad");
-        const filtro3 = log.filter(element => element.id === "Radiacion_solar");
+        const filtro1 = log.filter(element => element.id === "temperatura_aire");
+        const filtro2 = log.filter(element => element.id === "humedad_aire");
+        const filtro3 = log.filter(element => element.id === "radiacion_solar_aire");
 
-        res.render('general/index',
+        return res.render('general/index',
             {
                 title: "Temperatura",
                 data: filtro1,
