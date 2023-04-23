@@ -11,7 +11,7 @@ exports.index = async (req, res) => {
         const filtro2 = log.filter(element => element.id === "humedad");
         const filtro3 = log.filter(element => element.id === "Radiacion_solar");
 
-        res.render('general/index',
+        return res.render('general/index',
             {
                 title: "Temperatura",
                 data: filtro1,
