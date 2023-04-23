@@ -4,7 +4,7 @@ const dbo = require("../models/connection");
 exports.index = async (req, res) => {
     try{
         const db = dbo.getDb();
-        const interfaces = await db.collection("log")
+        const interfaces = await db.collection("logs")
         .find()
         .toArray();
 
@@ -21,7 +21,7 @@ exports.index = async (req, res) => {
 exports.add = async (req, res) => {
     try{
         const db = dbo.getDb();
-        const interfaces = await db.collection("log");
+        const interfaces = await db.collection("logs");
        
         const {id, value} = req.body;
         const fecha = new Date();
@@ -46,7 +46,7 @@ exports.add = async (req, res) => {
 
 exports.show = async (req, res) => {
     const db = dbo.getDb();
-    let collection = await db.collection("log");
+    let collection = await db.collection("logs");
     let query = {_id: ObjectId(req.params.id)};
     let result = await collection.findOne(query);
 
