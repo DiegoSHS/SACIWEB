@@ -5,9 +5,17 @@ exports.index = async (req, res) => {
     try {
         const db = dbo.getDb()
         const interfaces = await db.collection("logs")
-            .find()
-            .toArray()
-        res.status(200).json(interfaces)
+        const sensors = await db.collection("sensors").find({}).toArray()
+        const ids = sensors.map(({name}) => name)
+        const aggregations = (id) => {
+            return interfaces.aggregate([
+                { $match: { id:id } },
+                { $sort: { date: 1 }},
+            ])
+        }
+        const logs = ids.map((n) => aggregations(n))
+        const sensorLogs = await Promise.allSettled(logs)
+        return res.status(200).json(sensorLogs)
     } catch (error) {
         console.error(error)
         return res.status(503)
