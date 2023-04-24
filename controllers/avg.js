@@ -4,9 +4,9 @@ exports.index = async (req, res) => {
         const collection = await db.collection("logs")
         const aggregations = (sensor) => {
             return collection.aggregate([
-                { $match: { id: sensor } },
+                { $match: { id:id } },
                 { $sort: { date: 1, hour: 1 } },
-                { $project: { _id: 0 } }
+                { $project: {_id:0}}
             ]).limit(1).toArray()
         }
         const phsensors = [
@@ -23,9 +23,9 @@ exports.index = async (req, res) => {
             "humedad_suelo_s2",
             "humedad_suelo_s3",
         ]
-        const ph = await Promise.all(phsensors.map(aggregations))
-        const water = await Promise.all(watersensors.map(aggregations))
-        const humidity = await Promise.all(humiditysensors.map(aggregations))
+        const ph = await Promise.all(phsensors.map((s)=>aggregations(s)))
+        const water = await Promise.all(watersensors.map((s)=>aggregations(s)))
+        const humidity = await Promise.all(humiditysensors.map((s)=>aggregations(s)))
         const result = {
             ph: ph,
             water: water,
