@@ -1,29 +1,29 @@
 const { ObjectId } = require("mongodb")
 const dbo = require("../models/connection")
 
-setInterval(async () => {
+exports.show = async (req, res) => {
     try {
         const db = dbo.getDb();
 
-        const filtro = await db.collection("logs").findOne({ id: "nivel_agua" }, { sort: { $natural: -1 } });
+        setInterval(async () => {
+            const sensor = await db.collection("logs").findOne(
+                { id: "nivel_agua" },
+                { sort: { $natural: -1 } }
+            );
+            console.log(sensor); 
+        }, 300000);
 
-        console.log("Valor del filtro: ", filtro);
-
-        res.render('general/nivAgua', {
-            title: "Nivel de agua",
-            value: filtro.value,
-            date: filtro.date,
-            hour: filtro.hour,
-
-            serie: {
-                name: "Nivel de agua",
-                data: filtro.value
-            }
-        })
+      
+        const ultimoRegistro = await db.collection("logs").findOne(
+            { id: "nivel_agua" },
+            { sort: { $natural: -1 } }
+        );
+        res.json(ultimoRegistro);
     } catch (error) {
         console.error(error);
         return res.status(503).json({
-            message: `Error al leer la bitacora: ${error.message}`,
+            message: `Error al leer el último registro: ${error.message}`,
         });
     }
-}, 300000);
+}
+

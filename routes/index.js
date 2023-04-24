@@ -14,6 +14,8 @@ const graficasAireController = require("../controllers/generalAire");
 const graficasSueloController = require("../controllers/generalSuelo");
 const graficasAguaController = require("../controllers/generalAgua");
 const nivelAguaController = require("../controllers/sensorUltrasonico");
+const nivelAguaControlleActualizar = require("../controllers/actualizarEstdo");
+
 
 //Areas
 const areasController = require('../controllers/areas');
@@ -56,7 +58,8 @@ module.exports = () => {
   router.get('/areas', areasController.index);
 
   //nivel de agua
-  router.get('/ultimo_dato_sensor',nivelAguaController.index)
+  router.get('/ultimo_dato_sensor',nivelAguaController.show)
+  router.put("/estado_sensor",nivelAguaControlleActualizar.update);
 
   return router;
 };
