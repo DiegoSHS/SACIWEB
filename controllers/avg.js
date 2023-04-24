@@ -34,13 +34,14 @@ exports.index = async (req, res) => {
         const phvalues = ph.map(({value})=>value)
         const watervalues = water.map(({value})=>value)
         const humidityvalues = humidity.map(({value})=>value)
-        const phavg = phvalues.reduce((a,v)=>a+=v)
-        const wateravg = watervalues.reduce((a,v)=>a+=v)
-        const humidityavg = humidityvalues.reduce((a,v)=>a+=v)
+        const phavg = phvalues.reduce((acc,val)=>acc[0].value+=val[0].value)
+        const wateravg = watervalues.reduce((acc,val)=>acc[0].value+=val[0].value)
+        const humidityavg = humidityvalues.reduce((acc,val)=>acc[0].value+=val[0].value)
+        
         const result = {
-            humidityvalues,
-            watervalues,
-            phvalues,
+            phavg,
+            wateravg,
+            humidityavg
         }
 
         return res.status(200).json(result)
