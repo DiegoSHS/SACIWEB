@@ -27,9 +27,9 @@ exports.index = async (req, res) => {
         const water = await Promise.all(watersensors.map((s)=>aggregations(s)))
         const humidity = await Promise.all(humiditysensors.map((s)=>aggregations(s)))
         const result = {
-            ph: ph,
-            water: water,
-            humidity: humidity
+            ph: ph.value,
+            water: water.value,
+            humidity: humidity.value
         }
         return res.status(200).json(result)
     } catch (err){
