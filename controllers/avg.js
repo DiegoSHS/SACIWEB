@@ -9,7 +9,7 @@ exports.index = async (req, res) => {
                 { $match: { id:id } },
                 { $sort: { date: 1, hour: 1 } },
                 { $project: {_id:0}}
-            ]).limit(1).toArray()
+            ]).limit(1)
         }
         const phsensors = [
             "ph_suelo_s1",
@@ -29,9 +29,9 @@ exports.index = async (req, res) => {
         const water = await Promise.all(watersensors.map((s)=>aggregations(s)))
         const humidity = await Promise.all(humiditysensors.map((s)=>aggregations(s)))
         const result = {
-            ph: ph.value,
-            water: water.value,
-            humidity: humidity.value
+            ph: ph,
+            water: water,
+            humidity: humidity
         }
         return res.status(200).json(ph)
     } catch (error){
