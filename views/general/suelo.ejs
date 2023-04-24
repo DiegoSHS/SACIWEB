@@ -5,32 +5,36 @@
 
   <h1 class="text-center">Estado: Suelo</h1>
 
-  <div class="row d-flex align-items-center justify-content-center" style="height:100vh;">
+  <div style="margin-left: 5%;">
 
-    <div class="col-md-6 mx-6" style="margin-top: 5%;">
-      <div class="position-relative">
+    <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
+      <div class="position-relative" style="width: 80%;">
         <div id="chart-1"></div>
-        <a class="btn btn-primary position-absolute bottom-1  end-0" href="#">Ver grafica detallada</a><!-- En el href ponen las rutas a sus graficas especificas-->
       </div>
+      <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
     </div>
-    
-    <div class="col-md-6 mx-6" style="margin-top: 5%;">
-      <div class="position-relative">
+
+    <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
+      <div class="position-relative" style="width: 80%;">
         <div id="chart-2"></div>
-        <a class="btn btn-primary position-absolute bottom-1 end-0 " href="#">Ver grafica detallada</a><!-- En el href ponen las rutas a sus graficas especificas-->
       </div>
+      <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
     </div>
-    
-    <div class="col-md-6 mx-6" style="margin-top: 10%;">
-      <div class="position-relative">
+
+    <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
+      <div class="position-relative" style="width: 80%;">
         <div id="chart-3"></div>
-        <a class="btn btn-primary position-absolute bottom-1 end-0" href="#">Ver grafica detallada</a><!-- En el href ponen las rutas a sus graficas especificas-->
       </div>
+      <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
     </div>
 
   </div>
-  <br><br><br><br><br><br><br><br><br><br>
-</div><!-- Div general-->
+  <br><br><br><br>
+</div>
+<!-- Div general-->
+
+
+
 
 <script>
   //temperatura
@@ -47,6 +51,7 @@
   ],
   xaxis: {
     categories: <%- JSON.stringify(hour) %>,
+    max:60,
     labels: {
       style: {
         fontSize: '5px'
@@ -55,7 +60,7 @@
   },
   yaxis: {
     forceNiceScale: false,
-    
+    max:100,
     min:0,
     labels: {
       formatter: function (value) {
@@ -81,6 +86,7 @@ var options2 = {
   ],
   xaxis: {
     categories: <%- JSON.stringify(hour) %>,
+    max:60,
     labels: {
       style: {
         fontSize: '5px'
@@ -89,7 +95,7 @@ var options2 = {
   },
   yaxis: {
     forceNiceScale: false,
-    
+    max:100,
     min:0,
     labels: {
       formatter: function (value) {
@@ -115,6 +121,7 @@ var options3 = {
   ],
   xaxis: {
     categories: <%- JSON.stringify(hour) %>,
+    max:60,
     labels: {
       style: {
         fontSize: '5px'
@@ -122,9 +129,9 @@ var options3 = {
     }
   },
   yaxis: {
-    forceNiceScale: true,
-    max:14,
-    min:0,
+    forceNiceScale: false,
+  
+   
     labels: {
       formatter: function (value) {
         return "PH "+value;
