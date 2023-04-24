@@ -9,7 +9,7 @@ setInterval(async () => {
 
         console.log("Valor del filtro: ", filtro);
 
-        res.render('general/aire', {
+        res.render('general/nivAgua', {
             title: "Nivel de agua",
             value: filtro.value,
             date: filtro.date,
