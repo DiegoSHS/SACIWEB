@@ -12,7 +12,7 @@ exports.index = async (req, res) => {
                 { $match: { id:id } },
                 { $sort: { date: 1, hour: 1 } },
                 { $project: {_id:0}}
-            ])
+            ]).toArray()
         }
         const logs = ids.map((n) => aggregations(n))
         const promises = await Promise.allSettled(logs)
