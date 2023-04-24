@@ -42,8 +42,8 @@ module.exports = () => {
   router.put("/sensors/:id", sensoresConroller.update);
 
   router.get("/log", bitacorasController.index);
+  router.get("/logbysensor", bitacorasController.show);
   router.post("/log", bitacorasController.add);
-  router.get("/log/:id", bitacorasController.show);
 
   router.get("/reportes", reportesController.index);
 
