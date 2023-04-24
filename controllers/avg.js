@@ -4,7 +4,7 @@ exports.index = async (req, res) => {
     try {
         const db = dbo.getDb()
         const collection = await db.collection("logs")
-        const aggregations = (sensor) => {
+        const aggregations = (id) => {
             return collection.aggregate([
                 { $match: { id:id } },
                 { $sort: { date: 1, hour: 1 } },
