@@ -60,6 +60,7 @@ module.exports = () => {
   //nivel de agua
   router.get('/ultimo_dato_sensor',nivelAguaController.show)
   router.put("/estado_sensor",nivelAguaControlleActualizar.update);
+  router.get('/estado_sensor',nivelAguaControlleActualizar.show)
 
   return router;
 };
