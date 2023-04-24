@@ -33,6 +33,9 @@ exports.index = async (req, res) => {
         }
         return res.status(200).json(result)
     } catch (err){
-
+        console.error(err)
+        return res.status(503).json({
+            message: `Error al leer la lista de logs: ${error.message}`,
+        })
     }
 }
