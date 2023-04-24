@@ -33,7 +33,7 @@ exports.index = async (req, res) => {
             water: water.value,
             humidity: humidity.value
         }
-        return res.status(200).json(result)
+        return res.status(200).json(ph)
     } catch (error){
         console.error(error)
         return res.status(503).json({
