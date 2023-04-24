@@ -7,10 +7,10 @@ exports.index = async (req, res) => {
 
         const log = await db.collection("logs").find({}).toArray();
 
-        const filtro1 = log.filter(element => element.id === "temperatura_aire");
-        const filtro2 = log.filter(element => element.id === "humedad_aire");
-        const filtro3 = log.filter(element => element.id === "radiacion_solar_aire");
-
+        const filtro1 = log.filter(element => element.id === "temperatura_aire").slice(-60);
+        const filtro2 = log.filter(element => element.id === "humedad_aire").slice(-60);
+        const filtro3 = log.filter(element => element.id === "radiacion_solar_aire").slice(-60);
+        
         res.render('general/aire',
             {
                 title: "Temperatura",
