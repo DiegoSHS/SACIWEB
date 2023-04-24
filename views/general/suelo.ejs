@@ -1,156 +1,156 @@
 <%- include('../layout/header2'); %>
 
-<!-- Div general-->
-<div class="container" style="margin-top: 2%;">
+    <!-- Div general-->
+    <div class="container" style="margin-top: 2%;">
 
-  <h1 class="text-center">Estado: Suelo</h1>
+        <h1 class="text-center">Estado: Suelo</h1>
 
-  <div style="margin-left: 5%;">
+        <div style="margin-left: 5%;">
 
-    <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
-      <div class="position-relative" style="width: 80%;">
-        <div id="chart-1"></div>
-      </div>
-      <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
+            <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
+                <div class="position-relative" style="width: 80%;">
+                    <div id="chart-1"></div>
+                </div>
+                <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
+            </div>
+
+            <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
+                <div class="position-relative" style="width: 80%;">
+                    <div id="chart-2"></div>
+                </div>
+                <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
+            </div>
+
+            <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
+                <div class="position-relative" style="width: 80%;">
+                    <div id="chart-3"></div>
+                </div>
+                <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
+            </div>
+
+        </div>
+        <br><br><br><br>
     </div>
-
-    <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
-      <div class="position-relative" style="width: 80%;">
-        <div id="chart-2"></div>
-      </div>
-      <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
-    </div>
-
-    <div class="col-md-13 mx-6 d-flex align-items-center" style="margin-top: 5%;">
-      <div class="position-relative" style="width: 80%;">
-        <div id="chart-3"></div>
-      </div>
-      <a class="btn btn-primary ml-3" href="#" style="width: 20%; height: 70%; margin-top: auto; margin-bottom: auto;">Ver gráfica detallada</a>
-    </div>
-
-  </div>
-  <br><br><br><br>
-</div>
-<!-- Div general-->
+    <!-- Div general-->
 
 
 
 
-<script>
-  //temperatura
-  var options1 = {
-  chart: {
-    type: 'line',
-    width: '100%'
-  },
-  title: {
-    text: '<%= title %>'
-  },
-  series: [
-    <%- JSON.stringify(serie) %>
-  ],
-  xaxis: {
-    categories: <%- JSON.stringify(hour) %>,
-    max:60,
-    labels: {
-      style: {
-        fontSize: '5px'
-      }
-    }
-  },
-  yaxis: {
-    forceNiceScale: false,
-    max:100,
-    min:0,
-    labels: {
-      formatter: function (value) {
-        return value + "°C";
-      },
-      style: {
-        fontSize: '5px'
-      }
-    }
-  }
-};
-//humedad
-var options2 = {
-  chart: {
-    type: 'line',
-    width: '100%'
-  },
-  title: {
-    text: '<%= title1 %>'
-  },
-  series: [
-    <%- JSON.stringify(serie1) %>
-  ],
-  xaxis: {
-    categories: <%- JSON.stringify(hour) %>,
-    max:60,
-    labels: {
-      style: {
-        fontSize: '5px'
-      }
-    }
-  },
-  yaxis: {
-    forceNiceScale: false,
-    max:100,
-    min:0,
-    labels: {
-      formatter: function (value) {
-        return value + "%";
-      },
-      style: {
-        fontSize: '5px'
-      }
-    }
-  }
-};
-//Ph
-var options3 = {
-  chart: {
-    type: 'line',
-    width: '100%'
-  },
-  title: {
-    text: '<%= title2 %>'
-  },
-  series: [
-    <%- JSON.stringify(serie2) %>
-  ],
-  xaxis: {
-    categories: <%- JSON.stringify(hour) %>,
-    max:60,
-    labels: {
-      style: {
-        fontSize: '5px'
-      }
-    }
-  },
-  yaxis: {
-    forceNiceScale: false,
-  
-   
-    labels: {
-      formatter: function (value) {
-        return "PH "+value;
-      },
-      style: {
-        fontSize: '5px'
-      }
-    }
-  }
-};
+    <script>
+        //temperatura
+        var options1 = {
+            chart: {
+                type: 'line',
+                width: '100%'
+            },
+            title: {
+                text: '<%= title %>'
+            },
+            series: [
+                <%- JSON.stringify(serie) %>
+            ],
+            xaxis: {
+                categories: <%- JSON.stringify(hour) %>,
 
-  var chart = new ApexCharts(document.querySelector("#chart-1"), options1);
-  var chart2 = new ApexCharts(document.querySelector("#chart-2"), options2);
-  var chart3 = new ApexCharts(document.querySelector("#chart-3"), options3);
-  chart.render
+                labels: {
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            },
+            yaxis: {
+                forceNiceScale: false,
+                max: 100,
+                min: 0,
+                labels: {
+                    formatter: function(value) {
+                        return value + "°C";
+                    },
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            }
+        };
+        //humedad
+        var options2 = {
+            chart: {
+                type: 'line',
+                width: '100%'
+            },
+            title: {
+                text: '<%= title1 %>'
+            },
+            series: [
+                <%- JSON.stringify(serie1) %>
+            ],
+            xaxis: {
+                categories: <%- JSON.stringify(hour1) %>,
 
-  chart.render();
-  chart2.render();
-  chart3.render();
-</script>
+                labels: {
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            },
+            yaxis: {
+                forceNiceScale: false,
+                max: 100,
+                min: 0,
+                labels: {
+                    formatter: function(value) {
+                        return value + "%";
+                    },
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            }
+        };
+        //Ph
+        var options3 = {
+            chart: {
+                type: 'line',
+                width: '100%'
+            },
+            title: {
+                text: '<%= title2 %>'
+            },
+            series: [
+                <%- JSON.stringify(serie2) %>
+            ],
+            xaxis: {
+                categories: <%- JSON.stringify(hour2) %>,
 
-<%- include('../layout/footer2'); %>
+                labels: {
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            },
+            yaxis: {
+                forceNiceScale: false,
+
+
+                labels: {
+                    formatter: function(value) {
+                        return "PH " + value;
+                    },
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart-1"), options1);
+        var chart2 = new ApexCharts(document.querySelector("#chart-2"), options2);
+        var chart3 = new ApexCharts(document.querySelector("#chart-3"), options3);
+        chart.render
+
+        chart.render();
+        chart2.render();
+        chart3.render();
+    </script>
+
+    <%- include('../layout/footer2'); %>
