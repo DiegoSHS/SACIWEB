@@ -1,3 +1,5 @@
+const dbo = require("../models/connection")
+
 exports.index = async (req, res) => {
     try {
         const db = dbo.getDb()
