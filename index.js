@@ -11,8 +11,14 @@ const dbo = require('./models/connection')
 app.use('/public', express.static('public'))
 app.use(cors({
     origin:"*",
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+    credentials:true
 }))
+app.use((req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*")
+    res.header("Access-Control-Allow-Origin","Origin, X-Requested-with, Content-Type, Accept")
+    res.header("Access-Control-Allow-Methods")
+})
 app.set('view engine','ejs')
 app.set('views', path.join(__dirname,'views'))
 
