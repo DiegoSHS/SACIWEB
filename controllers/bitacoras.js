@@ -4,20 +4,8 @@ const padtwo = require("../utils/index.js")
 exports.index = async (req, res) => {
     try {
         const db = dbo.getDb()
-        const interfaces = await db.collection("logs")
-        const sensors = await db.collection("sensors").find({}).toArray()
-        const ids = sensors.map(({name}) => name)
-        const aggregations = (id) => {
-            return interfaces.aggregate([
-                { $match: { id:id } },
-                { $sort: { date: 1, hour: 1 } },
-                { $project: {_id:0}}
-            ]).toArray()
-        }
-        const logs = ids.map((n) => aggregations(n))
-        const promises = await Promise.allSettled(logs)
-        const sensorLogs = promises.map(({value}) => value)
-        return res.status(200).json(sensorLogs)
+        const interfaces = await db.collection("logs").find({}).toArray()
+        return res.status(200).json(interfaces)
     } catch (error) {
         console.error(error)
         return res.status(503)
@@ -74,11 +62,27 @@ exports.addMany = async (req, res) => {
 }
 
 exports.show = async (req, res) => {
-    const db = dbo.getDb()
-    let collection = await db.collection("logs")
-    let query = { _id: ObjectId(req.params.id) }
-    let result = await collection.findOne(query)
-
-    if (!result) res.send("Not found").status(404)
-    else res.send(result).status(200)
+    try {
+        const db = dbo.getDb()
+        const interfaces = await db.collection("logs")
+        const sensors = await db.collection("sensors").find({}).toArray()
+        const ids = sensors.map(({name}) => name)
+        const aggregations = (id) => {
+            return interfaces.aggregate([
+                { $match: { id:id } },
+                { $sort: { date: 1, hour: 1 } },
+                { $project: {_id:0}}
+            ]).toArray()
+        }
+        const logs = ids.map((n) => aggregations(n))
+        const promises = await Promise.allSettled(logs)
+        const sensorLogs = promises.map(({value}) => value)
+        return res.status(200).json(sensorLogs)
+    } catch (error) {
+        console.error(error)
+        return res.status(503)
+            .json({
+                message: `Error al leer la lista de interfacez: ${error.message}`
+            })
+    }
 }
