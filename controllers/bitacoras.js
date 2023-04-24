@@ -4,8 +4,8 @@ const padtwo = require("../utils/index.js")
 exports.index = async (req, res) => {
     try {
         const db = dbo.getDb()
-        const interfaces = await db.collection("logs").find({}).toArray()
-        return res.status(200).json(interfaces)
+        const result = await db.collection("logs").find({}).toArray()
+        return res.status(200).json(result)
     } catch (error) {
         console.error(error)
         return res.status(503)
@@ -14,13 +14,10 @@ exports.index = async (req, res) => {
             })
     }
 }
-exports.showavg = async (req, res) => {
-
-}
 exports.add = async (req, res) => {
     try {
         const db = dbo.getDb()
-        const interfaces = await db.collection("logs")
+        const collection = await db.collection("logs")
         const { body: { id, value } } = req
         const fecha = new Date(Date.now())
         const hour = fecha.toTimeString().split(' ')
@@ -30,7 +27,7 @@ exports.add = async (req, res) => {
             fecha.getDate(),
         ]
         const date = dates.map(padtwo).join('-')
-        const dato = await interfaces.insertOne({
+        const dato = await collection.insertOne({
             id, date, hour, value
         })
         return res.status(201).json({
@@ -48,9 +45,9 @@ exports.add = async (req, res) => {
 exports.addMany = async (req, res) => {
     try {
         const db = dbo.getDb()
-        const interfaces = await db.collection("logs")
+        const collection = await db.collection("logs")
         const { body: { values } } = req
-        const result = await interfaces.insertMany(values)
+        const result = await collection.insertMany(values)
         return res.status(201).json({
             message: 'Insertado correctamente',
             result
@@ -72,7 +69,7 @@ exports.showone = async (req, res) => {
             { $match: query },
             { $sort: { date: 1, hour: 1 } },
             { $project: { _id: 0 } }
-        ])
+        ]).toArray()
         return (result ? res.send(result).status(200) : res.send("Not found").status(404))
     } catch (error) {
         console.error(error)
@@ -84,11 +81,11 @@ exports.showone = async (req, res) => {
 exports.show = async (req, res) => {
     try {
         const db = dbo.getDb()
-        const interfaces = await db.collection("logs")
+        const collection = await db.collection("logs")
         const sensors = await db.collection("sensors").find({}).toArray()
         const ids = sensors.map(({name}) => name)
         const aggregations = (id) => {
-            return interfaces.aggregate([
+            return collection.aggregate([
                 { $match: { id:id } },
                 { $sort: { date: 1, hour: 1 } },
                 { $project: {_id:0}}
