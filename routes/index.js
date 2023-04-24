@@ -53,9 +53,9 @@ module.exports = () => {
   router.get("/suelo", graficasSueloController.index);
   router.get("/aire", graficasAireController.index);
   //nivel de agua
-  router.get('/ultimo_dato_sensor',nivelAguaController.show)
-  router.put("/estado_sensor",nivelAguaControlleActualizar.update);
-  router.get('/estado_sensor',nivelAguaControlleActualizar.show)
+  router.get('/api/ultimo_dato_sensor',nivelAguaController.show)
+  router.put("/api/estado_sensor",nivelAguaControlleActualizar.update);
+  router.get('/api/estado_sensor',nivelAguaControlleActualizar.show)
 
   return router;
 };
