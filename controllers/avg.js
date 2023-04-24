@@ -32,8 +32,8 @@ exports.index = async (req, res) => {
             humidity: humidity.value
         }
         return res.status(200).json(result)
-    } catch (err){
-        console.error(err)
+    } catch (error){
+        console.error(error)
         return res.status(503).json({
             message: `Error al leer la lista de logs: ${error.message}`,
         })
