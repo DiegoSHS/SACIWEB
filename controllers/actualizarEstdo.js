@@ -31,3 +31,23 @@ exports.update = async (req, res) => {
             });
     }
 };
+
+    exports.show = async (req, res) => {
+        try{
+            const db = dbo.getDb();
+            const sensor = await db.collection("sensors")
+            .find({"name":"ultrasonico"})
+            .toArray();
+    
+            res.json(sensor);
+        }    catch(error){
+            console.error(error);
+            return res.status(503)
+            .json({
+                message: `Error al leer la lista de ultrasonico: ${error.message}`
+            })
+        }
+    }
+
+
+
