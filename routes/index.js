@@ -22,41 +22,36 @@ const areasController = require('../controllers/areas');
 
 module.exports = () => {
   router.get("/", indexController.index);
-
+/*
   router.get("/interfaces", interfacesController.index);
   router.post("/interfaces", interfacesController.add);
   router.get("/interfaces/:id", interfacesController.show);
 
-  router.get("/modules", modulosController.index);
-  router.post("/modules", modulosController.add);
-  router.get("/modules/:id", modulosController.show)
+  router.get("/api/modules", modulosController.index);
+  router.post("/api/modules", modulosController.add);
+  router.get("/api/modules/:id", modulosController.show)
 
   router.get("/sections", seccionesController.index);
   router.post("/sections", seccionesController.add);
   router.get("/sections/:id", seccionesController.show);
   router.put("/sections/:id", seccionesController.update);
-
-  router.get("/sensors", sensoresConroller.index);
-  router.post("/sensors", sensoresConroller.add);
-  router.get("/sensors/:id", sensoresConroller.show);
-  router.put("/sensors/:id", sensoresConroller.update);
-
-  router.get("/log", bitacorasController.index);
-  router.get("/logbysensor", bitacorasController.show);
-  router.post("/log", bitacorasController.add);
-
+  router.get('/areas', areasController.index);
   router.get("/reportes", reportesController.index);
 
+*/
+  router.get("/api/sensors", sensoresConroller.index);
+  router.post("/api/sensors", sensoresConroller.add);
+  router.get("/api/sensors/:id", sensoresConroller.show);
+  router.put("/api/sensors/:id", sensoresConroller.update);
+
+  router.get("/api/log", bitacorasController.index);
+  router.get("/api/logbysensor", bitacorasController.show);
+  router.post("/api/log", bitacorasController.add);
   //graficas generales
   router.get("/general", graficasController.index);
   router.get("/agua", graficasAguaController.index);
   router.get("/suelo", graficasSueloController.index);
   router.get("/aire", graficasAireController.index);
-
-  //mostrarAreas
-
-  router.get('/areas', areasController.index);
-
   //nivel de agua
   router.get('/ultimo_dato_sensor',nivelAguaController.show)
   router.put("/estado_sensor",nivelAguaControlleActualizar.update);
