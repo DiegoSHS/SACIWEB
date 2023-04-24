@@ -15,7 +15,7 @@ exports.index = async (req, res) => {
     }
 }
 exports.showavg = async (req, res) => {
-    
+
 }
 exports.add = async (req, res) => {
     try {
@@ -62,7 +62,25 @@ exports.addMany = async (req, res) => {
         })
     }
 }
-
+exports.showone = async (req, res) => {
+    try {
+        const db = dbo.getDb()
+        const collection = await db.collection("logs")
+        const { params: { id } } = req
+        const query = { id: id }
+        const result = collection.aggregate([
+            { $match: query },
+            { $sort: { date: 1, hour: 1 } },
+            { $project: { _id: 0 } }
+        ])
+        return (result ? res.send(result).status(200) : res.send("Not found").status(404))
+    } catch (error) {
+        console.error(error)
+        return res.status(503).json({
+            message: `Error al leer la lista de logs: ${error.message}`,
+        })
+    }
+}
 exports.show = async (req, res) => {
     try {
         const db = dbo.getDb()
