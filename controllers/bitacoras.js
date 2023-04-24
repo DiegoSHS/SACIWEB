@@ -14,7 +14,9 @@ exports.index = async (req, res) => {
             })
     }
 }
-
+exports.showavg = async (req, res) => {
+    
+}
 exports.add = async (req, res) => {
     try {
         const db = dbo.getDb()
