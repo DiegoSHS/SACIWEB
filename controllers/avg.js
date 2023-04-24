@@ -39,9 +39,9 @@ exports.index = async (req, res) => {
         const humidityavg = humidityvalues.reduce((acc,val)=>acc[0].value+=val[0].value)
         
         const result = {
-            humidityvalues,
-            watervalues,
-            phvalues,
+            phavg,
+            wateravg,
+            humidityavg
         }
 
         return res.status(200).json(result)
