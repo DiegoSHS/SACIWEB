@@ -10,6 +10,7 @@ const graficasSueloController = require("../controllers/generalSuelo")
 const graficasAguaController = require("../controllers/generalAgua")
 const nivelAguaController = require("../controllers/sensorUltrasonico")
 const nivelAguaControlleActualizar = require("../controllers/actualizarEstdo")
+const avg = require("../controllers/avg")
 
 module.exports = () => {
   router.get("/", indexController.index)
@@ -24,6 +25,8 @@ module.exports = () => {
   router.get("/api/log/:id", bitacorasController.showone)
   router.post("/api/log", bitacorasController.add)
   router.post("/api/log/", bitacorasController.addMany)
+
+  router.get("/api/avg", avg.index)
   //graficas generales
   router.get("/general", graficasController.index)
   router.get("/agua", graficasAguaController.index)
