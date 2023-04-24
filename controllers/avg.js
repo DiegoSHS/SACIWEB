@@ -25,9 +25,9 @@ exports.index = async (req, res) => {
             "humedad_suelo_s2",
             "humedad_suelo_s3",
         ]
-        const ph = await Promise.all(phsensors.map((s)=>aggregations(s)))
-        const water = await Promise.all(watersensors.map((s)=>aggregations(s)))
-        const humidity = await Promise.all(humiditysensors.map((s)=>aggregations(s)))
+        const ph = await Promise.allSettled(phsensors.map((s)=>aggregations(s)[0]))
+        const water = await Promise.allSettled(watersensors.map((s)=>aggregations(s)[0]))
+        const humidity = await Promise.allSettled(humiditysensors.map((s)=>aggregations(s)[0]))
         const result = {
             ph: ph,
             water: water,
