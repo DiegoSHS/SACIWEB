@@ -55,7 +55,7 @@ exports.update = async (req, res) => {
         const {
             params: { id },
             body: {
-                name, description, interface, module, min, max, status, pin
+                name, description, module, min, max, status, pin
             }
         } = req
         const db = dbo.getDb()
@@ -64,7 +64,7 @@ exports.update = async (req, res) => {
                 _id: new ObjectId(id)
             }, {
                 $set: {
-                    name, description, interface, module, min, max, status, pin
+                    name, description, module, min, max, status, pin
                 }
             })
         return res.status(201).json({
