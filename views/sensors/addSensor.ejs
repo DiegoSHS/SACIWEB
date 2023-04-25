@@ -1,35 +1,57 @@
-<%- include('../layout/header'); %>
+<%- include('../layout/header2'); %>
 
 
     <br><br><br>
 
-    <form action="/agregarsensor" method="POST">
-        <label for="name">Nombre del sensor:</label>
-        <input type="text" id="name" name="name" required>
+    <h1 class="m-2">Agregar Sensor</h1>
 
-        <label for="description">Descripción:</label>
-        <textarea id="description" name="description"></textarea>
+    <form action="/agregarsensor" method="POST" style="width: 80%; margin-left: 10%;">
+        <div class="form-group">
+            <label for="name">Nombre del sensor:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
 
-        <label for="max">Valor máximo:</label>
-        <input type="number" id="max" name="max" required>
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
 
-        <label for="min">Valor mínimo:</label>
-        <input type="number" id="min" name="min" required>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="max">Valor máximo:</label>
+                <input type="number" class="form-control" id="max" name="max" required>
+            </div>
 
-        <label for="status">Estado:</label>
-        <select id="status" name="status">
-      <option value="activo">Activo</option>
-      <option value="inactivo">Inactivo</option>
-    </select>
+            <div class="form-group col-md-6">
+                <label for="min">Valor mínimo:</label>
+                <input type="number" class="form-control" id="min" name="min" required>
+            </div>
+        </div>
 
-        <label for="module">Módulo:</label>
-        <input type="text" id="module" name="module" required>
+        <div class="form-group">
+            <label for="status">Estado:</label>
+            <select class="form-control" id="status" name="status">
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+        </select>
+        </div>
 
-        <label for="pin">Pin:</label>
-        <input type="number" id="pin" name="pin" required>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="module">Módulo:</label>
+                <input type="text" class="form-control" id="module" name="module" required>
+            </div>
 
-        <button type="submit">Crear sensor</button>
+            <div class="form-group col-md-6">
+                <label for="pin">Pin:</label>
+                <input type="text" class="form-control" id="pin" name="pin" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear sensor</button>
     </form>
 
 
+
+    <br>
     <%- include('../layout/footer2'); %>
