@@ -16,6 +16,7 @@ const avg = require("../controllers/avg")
 module.exports = () => {
   router.get("/", indexController.index)
 
+
   router.get("/api/sensors", sensoresConroller.index)
   router.post("/api/sensors", sensoresConroller.add)
   router.get("/api/sensors/:id", sensoresConroller.show)
