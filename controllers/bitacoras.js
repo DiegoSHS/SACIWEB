@@ -20,7 +20,7 @@ exports.add = async (req, res) => {
         const collection = await db.collection("logs")
         const { body: { id, value } } = req
         const fecha = new Date(Date.now())
-        const hour = fecha.toTimeString().split(' ')[0]
+        const hour = fecha.toTimeString().split(' ')[1]
         const dates = [
             fecha.getFullYear(),
             fecha.getMonth(),
