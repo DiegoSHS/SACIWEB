@@ -23,11 +23,11 @@ exports.add = async (req, res) => {
         const interfaces = await db.collection("sensors");
         const {
             body: {
-                name, description, interface, module, min, max, status, pin
+                name, description, module, min, max, status, pin
             }
         } = req
         const dato = await interfaces.insertOne({
-            name, description, interface, module, min, max, status, pin
+            name, description, module, min, max, status, pin
         })
         return res.status(201).json({
             message: 'El producto fue creado correctamente.',
@@ -80,3 +80,26 @@ exports.update = async (req, res) => {
             })
     }
 };
+exports.destroy = async (req, res) => {
+    try {
+        const {
+            params: { id }
+        } = req
+        const db = dbo.getDb()
+        const modules = await db.collection("sensors")
+            .deleteOne({
+                _id: new ObjectId(id)
+            })
+        return res.status(201).json({
+            mesage: "El modulo fue eliminado",
+            modules
+        }
+        )
+    } catch (error) {
+        console.error(error)
+        return res.status(503)
+            .json({
+                mesage: `Error al eliminar el modulo ${error.message}`
+            })
+    }
+}
