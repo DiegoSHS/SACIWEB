@@ -1,5 +1,4 @@
 <%- include('../../layout/header2'); %>
-<<<<<<< HEAD
 
 <div class="container mt-5">
     <div class="row">
@@ -10,7 +9,7 @@
         </div>
 
         <div class="container mt-2">
-            <form action="/suelo/ph" method="GET">
+            <form action="/suelos/temperatura" method="GET">
                 <div class="row mt-5">
                     <div class="col-md-4 mx-auto rounded bg-info">
                         <label for="startDate" class="form-label fw-bold">Fecha inicio</label>
@@ -36,6 +35,12 @@
         <div class="col-md-8 mx-auto mt-5">
             <div class="position-relative">
                 <div id="chart-2"></div>
+            </div>
+        </div>
+
+        <div class="col-md-8 mx-auto mt-5">
+            <div class="position-relative">
+                <div id="chart-3"></div>
             </div>
         </div>
     </div>
@@ -65,17 +70,11 @@
             },
             yaxis: {
                 forceNiceScale: false,
-                max: 14,
+                max: 100,
                 min: 0,
                 labels: {
                     formatter: function(value) {
-                        if (value === Math.floor(value)) {
-                            // Si el valor es un número entero, devolver sin decimales
-                            return value + " pH";
-                        } else {
-                            // Si el valor es un número decimal con valor de cero, devolver sin decimales
-                            return value.toFixed(0) + " pH";
-                        }
+                        return value + " °C";
                     },
                     style: {
                         fontSize: '5px'
@@ -106,16 +105,16 @@
             },
             yaxis: {
                 forceNiceScale: false,
-                max: 14,
+                max: 100,
                 min: 0,
                 labels: {
                     formatter: function(value) {
                         if (value === Math.floor(value)) {
                             // Si el valor es un número entero, devolver sin decimales
-                            return value + " pH";
+                            return value + " °C";
                         } else {
                             // Si el valor es un número decimal con valor de cero, devolver sin decimales
-                            return value.toFixed(0) + " pH";
+                            return value.toFixed(0) + " °C";
                         }
                     },
                     style: {
@@ -124,14 +123,54 @@
                 }
             }
         };
-            
+        
+        var options3 = {
+            chart: {
+                type: 'line',
+                width: '100%'
+            },
+            title: {
+                text: '<%= serie3.name %>'
+            },
+            series: [
+                <%- JSON.stringify(serie3) %>
+            ],
+            xaxis: {
+                categories: <%- JSON.stringify(hour) %>,
+
+                labels: {
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            },
+            yaxis: {
+                forceNiceScale: false,
+                max: 100,
+                min: 0,
+                labels: {
+                    formatter: function(value) {
+                        if (value === Math.floor(value)) {
+                            // Si el valor es un número entero, devolver sin decimales
+                            return value + " °C";
+                        } else {
+                            // Si el valor es un número decimal con valor de cero, devolver sin decimales
+                            return value.toFixed(0) + " °C";
+                        }
+                    },
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            }
+        };
         
         var chart1 = new ApexCharts(document.querySelector("#chart-1"), options1);
         var chart2 = new ApexCharts(document.querySelector("#chart-2"), options2);
+        var chart3 = new ApexCharts(document.querySelector("#chart-3"), options3);
 
         chart1.render();
         chart2.render();
+        chart3.render();
+
     </script>
-<%- include('../../layout/header2'); %>
-=======
->>>>>>> d26bfa83faea656f07c502f1744797ffbf55733d

@@ -38,9 +38,9 @@ module.exports = () => {
     router.get("/agua", graficasAguaController.index)
 
     router.get("/suelo", graficasSueloController.index)
-    router.get("/suelo/temperatura", graficasSueloController.chartTemperatura)
-    router.get("/suelo/humedad", graficasSueloController.chartHumedad)
-    router.get("/suelo/ph", graficasSueloController.chartPh)
+    router.get("/suelos/temperatura", graficasSueloController.chartTemperatura)
+    router.get("/suelos/humedad", graficasSueloController.chartHumedad)
+    router.get("/suelos/ph", graficasSueloController.chartPh)
 
     router.get("/aire", graficasAireController.index)
         //nivel de agua
