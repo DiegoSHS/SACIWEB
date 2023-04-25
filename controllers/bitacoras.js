@@ -54,18 +54,18 @@ exports.autofill = async (req, res) => {
         const db = dbo.getDb()
         const collection = await db.collection("logs")
         let i = 0;
+        const logs = []
         while (i < 200) {
             const { date, hour } = createDate()
             const id = "tds_agua"
             const between = (min, max) => Math.floor(Math.random() * (max - min) + min)
             const value = between(300, 500)
-            await collection.insertOne({
-                id, date, hour, value
-            })
+            const log = { id, date, hour, value }
+            logs.push(log)
             i++;
         }
         return res.status(201).json({
-            message: 'Insertado correctamente',
+            logs
         })
     } catch (error) {
         console.error(error)
