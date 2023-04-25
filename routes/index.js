@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }));
 
 const indexController = require('../controllers')
 const sensoresConroller = require("../controllers/sensores")
@@ -49,7 +51,12 @@ module.exports = () => {
     router.get('/api/estado_sensor', nivelAguaControlleActualizar.show)
 
     //sensores
-    router.put('/agregarsensor', agregarSensor.add);
+
+    const bodyParser = require('body-parser');
+    router.use(bodyParser.urlencoded({ extended: true }));
+
+    router.post('/agregarsensor', agregarSensor.agregarNuevoSensor);
+    router.get('/agregarsensor', agregarSensor.mostrarFormulario);
     return router
 }
 
