@@ -55,8 +55,9 @@ module.exports = () => {
     const bodyParser = require('body-parser');
     router.use(bodyParser.urlencoded({ extended: true }));
 
-    router.post('/agregarsensor', agregarSensor.agregarNuevoSensor);
-    router.get('/agregarsensor', agregarSensor.mostrarFormulario);
+    router.post('/sensors/add', agregarSensor.agregarNuevoSensor);
+    router.get('/sensors/add', agregarSensor.mostrarFormulario);
+    router.get('/sensors', agregarSensor.list);
     return router
 }
 
