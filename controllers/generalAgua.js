@@ -7,9 +7,9 @@ exports.index = async(req, res) => {
 
         const log = await db.collection("logs").find({}).toArray();
 
-        const filtro1 = log.filter(element => element.id === "conductividad_luminosidad").slice(-60);
-        const filtro2 = log.filter(element => element.id === "conductividad_co2").slice(-60);
-        const filtro3 = log.filter(element => element.id === "conductividad_tds").slice(-60);
+        const filtro1 = log.filter(element => element.id === "luminosidad").slice(-60);
+        const filtro2 = log.filter(element => element.id === "cantidad_co2").slice(-60);
+        const filtro3 = log.filter(element => element.id === "tds_agua").slice(-60);
 
         res.render('general/agua', {
             title: "Luminosidad",
