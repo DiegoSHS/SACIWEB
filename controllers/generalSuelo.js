@@ -56,24 +56,57 @@ exports.index = async (req, res) => {
 
 exports.chartTemperatura = async (req, res) => {
     try {
-        const { startDate, endDate } = req.query; // Obtener fecha de inicio y fecha de fin de los parámetros de consulta
         const db = dbo.getDb();
+        const startDate = req.query.startDate;
+        const endDate = req.query.endDate;
 
         const filtro1 = await db.collection("logs").find({
-            id: "temperatura_suelo",
-            date: { $gte: new Date(startDate), $lte: new Date(endDate) }
+            id: "temperatura_suelo_s1",
+            date: { $gte: startDate, $lte: endDate }
+        }).toArray();
+
+        const filtro2 = await db.collection("logs").find({
+            id: "temperatura_suelo_s2",
+            date: { $gte: startDate, $lte: endDate }
+        }).toArray();
+
+        const filtro3 = await db.collection("logs").find({
+            id: "temperatura_suelo_s3",
+            date: { $gte: startDate, $lte: endDate }
         }).toArray();
 
         res.render('general/suelo/temperatura', {
-            title: "Temperatura",
+            title: "Temperatura - Sensor 1",
             data: filtro1,
             value: filtro1.map(({ value }) => value),
             date: filtro1.map(({ date }) => date),
             hour: filtro1.map(({ hour }) => hour),
 
-            serie: {
-                name: "Temperatura",
+            serie1: {
+                name: "Temperatura - Sensor 1",
                 data: filtro1.map(({ value }) => value)
+            },
+
+            title: "Temperatura - Sensor 2",
+            data: filtro2,
+            value: filtro2.map(({ value }) => value),
+            date: filtro2.map(({ date }) => date),
+            hour: filtro2.map(({ hour }) => hour),
+
+            serie2: {
+                name: "Temperatura - Sensor 2",
+                data: filtro2.map(({ value }) => value)
+            },
+
+            title: "Temperatura - Sensor 3",
+            data: filtro3,
+            value: filtro3.map(({ value }) => value),
+            date: filtro3.map(({ date }) => date),
+            hour: filtro3.map(({ hour }) => hour),
+
+            serie3: {
+                name: "Temperatura - Sensor 3",
+                data: filtro3.map(({ value }) => value)
             }
         });
     } catch (error) {
@@ -84,24 +117,57 @@ exports.chartTemperatura = async (req, res) => {
 
 exports.chartHumedad = async (req, res) => {
     try {
-        const { startDate, endDate } = req.query; // Obtener fecha de inicio y fecha de fin de los parámetros de consulta
         const db = dbo.getDb();
+        const startDate = req.query.startDate;
+        const endDate = req.query.endDate;
 
         const filtro1 = await db.collection("logs").find({
-            id: "humedad_suelo",
-            date: { $gte: new Date(startDate), $lte: new Date(endDate) }
+            id: "humedad_suelo_s1",
+            date: { $gte: startDate, $lte: endDate }
+        }).toArray();
+
+        const filtro2 = await db.collection("logs").find({
+            id: "humedad_suelo_s2",
+            date: { $gte: startDate, $lte: endDate }
+        }).toArray();
+
+        const filtro3 = await db.collection("logs").find({
+            id: "humedad_suelo_s3",
+            date: { $gte: startDate, $lte: endDate }
         }).toArray();
 
         res.render('general/suelo/humedad', {
-            title: "Humedad",
+            title: "Húmedad - Sensor 1",
             data: filtro1,
             value: filtro1.map(({ value }) => value),
             date: filtro1.map(({ date }) => date),
             hour: filtro1.map(({ hour }) => hour),
 
-            serie: {
-                name: "Humedad",
+            serie1: {
+                name: "Húmedad - Sensor 1",
                 data: filtro1.map(({ value }) => value)
+            },
+
+            title: "Húmedad - Sensor 2",
+            data: filtro2,
+            value: filtro2.map(({ value }) => value),
+            date: filtro2.map(({ date }) => date),
+            hour: filtro2.map(({ hour }) => hour),
+
+            serie2: {
+                name: "Húmedad - Sensor 2",
+                data: filtro2.map(({ value }) => value)
+            },
+
+            title: "Húmedad - Sensor 3",
+            data: filtro3,
+            value: filtro3.map(({ value }) => value),
+            date: filtro3.map(({ date }) => date),
+            hour: filtro3.map(({ hour }) => hour),
+
+            serie3: {
+                name: "Húmedad - Sensor 3",
+                data: filtro3.map(({ value }) => value)
             }
         });
     } catch (error) {
@@ -109,26 +175,44 @@ exports.chartHumedad = async (req, res) => {
         res.status(500).send("Hubo un error en la consulta de datos");
     }
 };
+
 exports.chartPh = async (req, res) => {
     try {
-        const { startDate, endDate } = req.query; // Obtener fecha de inicio y fecha de fin de los parámetros de consulta
         const db = dbo.getDb();
+        const startDate = req.query.startDate;
+        const endDate = req.query.endDate;
 
         const filtro1 = await db.collection("logs").find({
-            id: "ph_suelo",
-            date: { $gte: new Date(startDate), $lte: new Date(endDate) }
+            id: "ph_suelo_s1",
+            date: { $gte: startDate, $lte: endDate }
+        }).toArray();
+
+        const filtro2 = await db.collection("logs").find({
+            id: "ph_suelo_s2",
+            date: { $gte: startDate, $lte: endDate }
         }).toArray();
 
         res.render('general/suelo/ph', {
-            title: "PH",
+            title: "PH - Sensor 1",
             data: filtro1,
             value: filtro1.map(({ value }) => value),
             date: filtro1.map(({ date }) => date),
             hour: filtro1.map(({ hour }) => hour),
 
-            serie: {
-                name: "PH",
+            serie1: {
+                name: "PH - Sensor 1",
                 data: filtro1.map(({ value }) => value)
+            },
+
+            title: "PH - Sensor 2",
+            data: filtro2,
+            value: filtro2.map(({ value }) => value),
+            date: filtro2.map(({ date }) => date),
+            hour: filtro2.map(({ hour }) => hour),
+
+            serie2: {
+                name: "HP - Sensor 2",
+                data: filtro2.map(({ value }) => value)
             }
         });
     } catch (error) {
