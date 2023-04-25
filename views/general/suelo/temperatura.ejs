@@ -1,0 +1,68 @@
+<%- include('../../layout/header'); %>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="container my-4">
+            <div class="text-center">
+                <h1>Consulta de datos</h1>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-4 mx-auto">
+                <label for="fechaInicio" class="form-label">Fecha inicio</label>
+                <input type="date" class="form-control" id="fechaInicio">
+            </div>
+            <div class="col-md-4 mx-auto">
+                <label for="fechaFin" class="form-label">Fecha fin</label>
+                <input type="date" class="form-control" id="fechaFin">
+            </div>
+        </div>
+        <div class="col-md-8 mx-auto mt-5">
+            <div class="position-relative">
+                <div id="chart-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        var options1 = {
+            chart: {
+                type: 'line',
+                width: '100%'
+            },
+            title: {
+                text: '<%= title %>'
+            },
+            series: [
+                <%- JSON.stringify(serie) %>
+            ],
+            xaxis: {
+                categories: <%- JSON.stringify(hour) %>,
+
+                labels: {
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            },
+            yaxis: {
+                forceNiceScale: false,
+                max: 100,
+                min: 0,
+                labels: {
+                    formatter: function(value) {
+                        return value + "°C";
+                    },
+                    style: {
+                        fontSize: '5px'
+                    }
+                }
+            }
+        };
+        
+        var chart = new ApexCharts(document.querySelector("#chart-1"), options1);
+
+        chart.render();
+
+    </script>

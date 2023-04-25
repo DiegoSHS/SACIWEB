@@ -34,7 +34,12 @@ module.exports = () => {
   //graficas generales
   router.get("/general", graficasController.index)
   router.get("/agua", graficasAguaController.index)
+
   router.get("/suelo", graficasSueloController.index)
+  router.get("/suelo/temperatura", graficasSueloController.chartTemperatura)
+  router.get("/suelo/humedad", graficasSueloController.chartHumedad)
+  router.get("/suelo/ph", graficasSueloController.chartPh)
+
   router.get("/aire", graficasAireController.index)
   //nivel de agua
   router.get('/api/ultimo_dato_sensor', nivelAguaController.show)

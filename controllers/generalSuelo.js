@@ -53,3 +53,86 @@ exports.index = async (req, res) => {
         });
     }
 }
+
+exports.chartTemperatura = async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query; // Obtener fecha de inicio y fecha de fin de los parámetros de consulta
+        const db = dbo.getDb();
+
+        const filtro1 = await db.collection("logs").find({
+            id: "temperatura_suelo",
+            date: { $gte: new Date(startDate), $lte: new Date(endDate) }
+        }).toArray();
+
+        res.render('general/suelo/temperatura', {
+            title: "Temperatura",
+            data: filtro1,
+            value: filtro1.map(({ value }) => value),
+            date: filtro1.map(({ date }) => date),
+            hour: filtro1.map(({ hour }) => hour),
+
+            serie: {
+                name: "Temperatura",
+                data: filtro1.map(({ value }) => value)
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Hubo un error en la consulta de datos");
+    }
+};
+
+exports.chartHumedad = async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query; // Obtener fecha de inicio y fecha de fin de los parámetros de consulta
+        const db = dbo.getDb();
+
+        const filtro1 = await db.collection("logs").find({
+            id: "humedad_suelo",
+            date: { $gte: new Date(startDate), $lte: new Date(endDate) }
+        }).toArray();
+
+        res.render('general/suelo/humedad', {
+            title: "Humedad",
+            data: filtro1,
+            value: filtro1.map(({ value }) => value),
+            date: filtro1.map(({ date }) => date),
+            hour: filtro1.map(({ hour }) => hour),
+
+            serie: {
+                name: "Humedad",
+                data: filtro1.map(({ value }) => value)
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Hubo un error en la consulta de datos");
+    }
+};
+exports.chartPh = async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query; // Obtener fecha de inicio y fecha de fin de los parámetros de consulta
+        const db = dbo.getDb();
+
+        const filtro1 = await db.collection("logs").find({
+            id: "ph_suelo",
+            date: { $gte: new Date(startDate), $lte: new Date(endDate) }
+        }).toArray();
+
+        res.render('general/suelo/ph', {
+            title: "PH",
+            data: filtro1,
+            value: filtro1.map(({ value }) => value),
+            date: filtro1.map(({ date }) => date),
+            hour: filtro1.map(({ hour }) => hour),
+
+            serie: {
+                name: "PH",
+                data: filtro1.map(({ value }) => value)
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Hubo un error en la consulta de datos");
+    }
+};
