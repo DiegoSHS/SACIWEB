@@ -35,11 +35,11 @@ exports.agregarNuevoSensor = async(req, res) => {
             pin,
         });
         // Envía una alerta de éxito y redirecciona al formulario
-        res.send('<script>alert("El sensor fue creado correctamente"); window.location.href="/agregarsensor";</script>');
+        res.send('<script>alert("El sensor fue creado correctamente"); window.location.href="/sensors";</script>');
     } catch (error) {
         console.error(error);
         // Envía una alerta de error y redirecciona al formulario
-        res.send('<script>alert("Error al crear el sensor"); window.location.href="/agregarsensor";</script>');
+        res.send('<script>alert("Error al crear el sensor"); window.location.href="/sensors";</script>');
     }
 };
 
@@ -65,5 +65,34 @@ exports.list = async(req, res) => {
                 message: `Error al obtener la lista de sensores: ${error.message}`
             });
 
+    }
+}
+
+
+
+exports.delete = async (req, res) => {
+    try {
+        //validar id
+        if (!req.params.id || req.params.id.length !== 24) {
+            return res.status(400).json({
+                message: 'ID inválido',
+            });
+        }
+
+
+        const db = dbo.getDb();
+        const sensorsCollection = await db.collection("sensors")
+        const query = { _id: new ObjectId(req.params.id) };
+
+        const result = await sensorsCollection.deleteOne(query);
+        res.json({
+            message: 'eliminado correctamente',
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(503)
+            .json[{
+                message: 'Error al eliminar el sensor: ${error.message}'
+            }]
     }
 }

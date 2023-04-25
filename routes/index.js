@@ -58,6 +58,7 @@ module.exports = () => {
     router.post('/sensors/add', agregarSensor.agregarNuevoSensor);
     router.get('/sensors/add', agregarSensor.mostrarFormulario);
     router.get('/sensors', agregarSensor.list);
+    router.delete('/sensors/delete/:id',agregarSensor.delete);
     return router
 }
 
