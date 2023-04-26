@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }));
 
 const indexController = require('../controllers')
 const sensoresConroller = require("../controllers/sensores")
@@ -10,44 +12,53 @@ const graficasSueloController = require("../controllers/generalSuelo")
 const graficasAguaController = require("../controllers/generalAgua")
 const nivelAguaController = require("../controllers/sensorUltrasonico")
 const nivelAguaControlleActualizar = require("../controllers/actualizarEstdo")
+const agregarSensor = require("../controllers/agregarSensor");
+
 
 const avg = require("../controllers/avg")
 
 module.exports = () => {
-  router.get("/", indexController.index)
+    router.get("/", indexController.index)
 
 
-  router.get("/api/sensors", sensoresConroller.index)
-  router.post("/api/sensors", sensoresConroller.add)
-  router.get("/api/sensors/:id", sensoresConroller.show)
-  router.put("/api/sensors/:id", sensoresConroller.update)
-  router.delete("/api/sensors/:id", sensoresConroller.destroy)
+    router.get("/api/sensors", sensoresConroller.index)
+    router.post("/api/sensors", sensoresConroller.add)
+    router.get("/api/sensors/:id", sensoresConroller.show)
+    router.put("/api/sensors/:id", sensoresConroller.update)
+    router.delete("/api/sensors/:id", sensoresConroller.destroy)
 
-  router.get("/api/log", bitacorasController.index)
-  router.get("/api/logbysensor", bitacorasController.show)
-  router.get("/api/log/:id", bitacorasController.showone)
-  router.post("/api/log", bitacorasController.add)
-  router.post("/api/manylogs", bitacorasController.addMany)
-  router.get("/api/log/autofill", bitacorasController.autofill)
+    router.get("/api/log", bitacorasController.index)
+    router.get("/api/logbysensor", bitacorasController.show)
+    router.get("/api/log/:id", bitacorasController.showone)
+    router.post("/api/log", bitacorasController.add)
+    router.post("/api/manylogs", bitacorasController.addMany)
+    router.get("/api/log/autofill", bitacorasController.autofill)
 
-  router.get("/api/avg", avg.index)
-  //graficas generales
-  router.get("/general", graficasController.index)
-  router.get("/agua", graficasAguaController.index)
+    router.get("/api/avg", avg.index)
+    //graficas generales
+    router.get("/general", graficasController.index)
+    router.get("/agua", graficasAguaController.index)
 
-  router.get("/suelo", graficasSueloController.index)
-  router.get("/suelo/temperatura", graficasSueloController.chartTemperatura)
-  router.get("/suelo/humedad", graficasSueloController.chartHumedad)
-  router.get("/suelo/ph", graficasSueloController.chartPh)
+    router.get("/suelo", graficasSueloController.index)
+    router.get("/suelos/temperatura", graficasSueloController.chartTemperatura)
+    router.get("/suelos/humedad", graficasSueloController.chartHumedad)
+    router.get("/suelos/ph", graficasSueloController.chartPh)
 
-  router.get("/aire", graficasAireController.index)
-  //nivel de agua
-  router.get('/api/ultimo_dato_sensor', nivelAguaController.show)
-  router.get('/api/estado', nivelAguaController.arduino)
-  router.put("/api/estado_sensor/:id", nivelAguaControlleActualizar.update)
-  router.get('/api/estado_sensor', nivelAguaControlleActualizar.show)
+    router.get("/aire", graficasAireController.index)
+    //nivel de agua
+    router.get('/api/ultimo_dato_sensor', nivelAguaController.show)
+    router.put("/api/estado_sensor/:id", nivelAguaControlleActualizar.update)
+    router.get('/api/estado_sensor', nivelAguaControlleActualizar.show)
+    //sensores
 
-  return router
+    const bodyParser = require('body-parser');
+    router.use(bodyParser.urlencoded({ extended: true }));
+
+    router.post('/sensors/add', agregarSensor.agregarNuevoSensor);
+    router.get('/sensors/add', agregarSensor.mostrarFormulario);
+    router.get('/sensors', agregarSensor.list);
+    router.delete('/sensors/delete/:id', agregarSensor.delete);
+    return router
 }
 
 /*
