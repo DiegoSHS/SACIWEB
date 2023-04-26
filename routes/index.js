@@ -20,7 +20,6 @@ const avg = require("../controllers/avg")
 module.exports = () => {
     router.get("/", indexController.index)
 
-
     router.get("/api/sensors", sensoresConroller.index)
     router.post("/api/sensors", sensoresConroller.add)
     router.get("/api/sensors/:id", sensoresConroller.show)
@@ -31,11 +30,11 @@ module.exports = () => {
     router.get("/api/logbysensor", bitacorasController.show)
     router.get("/api/log/:id", bitacorasController.showone)
     router.post("/api/log", bitacorasController.add)
-    router.post("/api/log/", bitacorasController.addMany)
-    router.get("/api/log/autofill/", bitacorasController.autofill)
+    router.post("/api/manylogs", bitacorasController.addMany)
+    router.get("/api/autologs/:id", bitacorasController.autofill)
 
     router.get("/api/avg", avg.index)
-        //graficas generales
+    //graficas generales
     router.get("/general", graficasController.index)
     router.get("/agua", graficasAguaController.index)
 
@@ -45,11 +44,10 @@ module.exports = () => {
     router.get("/suelos/ph", graficasSueloController.chartPh)
 
     router.get("/aire", graficasAireController.index)
-        //nivel de agua
+    //nivel de agua
     router.get('/api/ultimo_dato_sensor', nivelAguaController.show)
     router.put("/api/estado_sensor/:id", nivelAguaControlleActualizar.update)
     router.get('/api/estado_sensor', nivelAguaControlleActualizar.show)
-
     //sensores
 
     const bodyParser = require('body-parser');
@@ -58,7 +56,7 @@ module.exports = () => {
     router.post('/sensors/add', agregarSensor.agregarNuevoSensor);
     router.get('/sensors/add', agregarSensor.mostrarFormulario);
     router.get('/sensors', agregarSensor.list);
-    router.delete('/sensors/delete/:id',agregarSensor.delete);
+    router.delete('/sensors/delete/:id', agregarSensor.delete);
     return router
 }
 
