@@ -14,7 +14,6 @@ const createDate = () => {
     return { date, hour }
 }
 
-
 exports.index = async (req, res) => {
     try {
         const db = dbo.getDb()
@@ -62,10 +61,10 @@ exports.autofill = async (req, res) => {
             const value = between(300, 500)
             const log = { id, date, hour, value }
             logs.push(log)
-            i++;
+            i++
         }
         return res.status(201).json({
-            logs
+            "message": "Insertado correctamente"
         })
     } catch (error) {
         console.error(error)
@@ -79,8 +78,8 @@ exports.addMany = async (req, res) => {
     try {
         const db = dbo.getDb()
         const collection = await db.collection("logs")
-        const { body: { values } } = req
-        const result = await collection.insertMany(values)
+        const { body } = req
+        const result = await collection.insertMany(body)
         return res.status(201).json({
             message: 'Insertado correctamente',
             result

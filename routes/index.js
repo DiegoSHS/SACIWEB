@@ -27,8 +27,8 @@ module.exports = () => {
   router.get("/api/logbysensor", bitacorasController.show)
   router.get("/api/log/:id", bitacorasController.showone)
   router.post("/api/log", bitacorasController.add)
-  router.post("/api/log/", bitacorasController.addMany)
-  router.get("/api/log/autofill/", bitacorasController.autofill)
+  router.post("/api/manylogs", bitacorasController.addMany)
+  router.get("/api/log/autofill", bitacorasController.autofill)
 
   router.get("/api/avg", avg.index)
   //graficas generales
@@ -43,6 +43,7 @@ module.exports = () => {
   router.get("/aire", graficasAireController.index)
   //nivel de agua
   router.get('/api/ultimo_dato_sensor', nivelAguaController.show)
+  router.get('/api/estado', nivelAguaController.arduino)
   router.put("/api/estado_sensor/:id", nivelAguaControlleActualizar.update)
   router.get('/api/estado_sensor', nivelAguaControlleActualizar.show)
 
