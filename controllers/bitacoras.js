@@ -134,7 +134,7 @@ exports.show = async (req, res) => {
                 { $project: { _id: 0 } }
             ]).toArray()
         }
-        const logs = ids.map((n) => aggregations(n))
+        const logs = ids.map(aggregations)
         const promises = await Promise.allSettled(logs)
         const sensorLogs = promises.map(({ value }) => value)
         return res.status(200).json(sensorLogs)
