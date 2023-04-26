@@ -25,9 +25,9 @@ exports.index = async (req, res) => {
             "humedad_suelo_s2",
             "humedad_suelo_s3",
         ]
-        const phpromises = phsensors.map((s) => aggregations(s))
-        const waterpromises = watersensors.map((s) => aggregations(s))
-        const humiditypromises = humiditysensors.map((s) => aggregations(s))
+        const phpromises = phsensors.map(aggregations)
+        const waterpromises = watersensors.map(aggregations)
+        const humiditypromises = humiditysensors.map(aggregations)
 
         const ph = await Promise.allSettled(phpromises)
         const water = await Promise.allSettled(waterpromises)
@@ -48,7 +48,6 @@ exports.index = async (req, res) => {
             wateravg,
             humidityavg
         }
-        console.log(result)
         return res.status(200).json(result)
     } catch (error) {
         console.error(error)
