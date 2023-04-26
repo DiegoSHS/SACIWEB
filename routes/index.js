@@ -20,7 +20,6 @@ const avg = require("../controllers/avg")
 module.exports = () => {
     router.get("/", indexController.index)
 
-
     router.get("/api/sensors", sensoresConroller.index)
     router.post("/api/sensors", sensoresConroller.add)
     router.get("/api/sensors/:id", sensoresConroller.show)
@@ -32,7 +31,7 @@ module.exports = () => {
     router.get("/api/log/:id", bitacorasController.showone)
     router.post("/api/log", bitacorasController.add)
     router.post("/api/manylogs", bitacorasController.addMany)
-    router.get("/api/log/autofill", bitacorasController.autofill)
+    router.get("/api/autologs/:id", bitacorasController.autofill)
 
     router.get("/api/avg", avg.index)
     //graficas generales

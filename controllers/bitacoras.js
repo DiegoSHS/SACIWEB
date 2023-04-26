@@ -1,10 +1,10 @@
 const { ObjectId } = require("mongodb")
 const dbo = require("../models/connection")
-const padtwo = require("../utils/index.js")
+const { padtwo } = require("../utils/index.js")
 
 const createDate = () => {
     const fecha = new Date(Date.now())
-    const hour = fecha.toTimeString().split(' ')[1]
+    const hour = fecha.toTimeString().split(' ')[0]
     const dates = [
         fecha.getFullYear(),
         fecha.getMonth(),
@@ -51,20 +51,32 @@ exports.add = async (req, res) => {
 exports.autofill = async (req, res) => {
     try {
         const db = dbo.getDb()
+        const { params: { id } } = req
+        const sensors = await db.collection("sensors")
+        const sensor = await sensors.aggregate([
+            { $match: { name: id } },
+            { $project: { _id: 0, name: 1 } }
+        ]).toArray()
+        if (!sensor.length) {
+            return res.status(404).json({
+                message: `Sensor ${id} no encontrado`
+            })
+        }
         const collection = await db.collection("logs")
         let i = 0;
         const logs = []
         while (i < 200) {
             const { date, hour } = createDate()
-            const id = "tds_agua"
+            const id = sensor[0].name
             const between = (min, max) => Math.floor(Math.random() * (max - min) + min)
             const value = between(300, 500)
             const log = { id, date, hour, value }
             logs.push(log)
             i++
         }
+        const result = await collection.insertMany(logs)
         return res.status(201).json({
-            "message": "Insertado correctamente"
+            result
         })
     } catch (error) {
         console.error(error)
@@ -96,9 +108,8 @@ exports.showone = async (req, res) => {
         const db = dbo.getDb()
         const collection = await db.collection("logs")
         const { params: { id } } = req
-        const query = { id: id }
         const result = collection.aggregate([
-            { $match: query },
+            { $match: { id: id } },
             { $sort: { date: 1, hour: 1 } },
             { $project: { _id: 0 } }
         ]).toArray()
