@@ -25,7 +25,7 @@ const formatter = (indate, mode = true) => {
 }
 exports.updatelogs = async (req, res) => {
     try {
-        const db = dbo.getDB()
+        const db = dbo.getDb()
         const collection = await db.collection("logs")
         const logs = await collection.find({}).toArray()
         const updatedlogs = logs.map(({_id,id,value,date,hour}) => {
