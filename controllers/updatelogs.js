@@ -49,7 +49,8 @@ exports.updatelogs = async (req, res) => {
         const newResult = await collection.insertMany(updatedlogs)
         return res.status(200).json({
             message: 'Logs actualizados correctamente',
-            updatedlogs
+            result,
+            newResult
         })
     }catch (error) {
         console.error(error)
