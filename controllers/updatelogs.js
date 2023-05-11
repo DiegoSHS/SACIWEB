@@ -36,11 +36,11 @@ exports.updatelogs = async (req, res) => {
         const updatedlogs = logs.map(({ id, value, day, month }) => {
             value = Number(value)
             const newDate = new Date(Date.now())
-            const { year, month, day, monthName } = formatter(newDate, false)
             const newLog = {
                 id,
                 value,
                 date: formatter(newDate),
+                ...formatter(newDate, false)
             }
             return newLog
         })
