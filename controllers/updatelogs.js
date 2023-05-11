@@ -28,11 +28,10 @@ exports.updatelogs = async (req, res) => {
         const db = dbo.getDb()
         const collection = await db.collection("logs")
         const logs = await collection.find({}).toArray()
-        const updatedlogs = logs.map(({_id,id,value,date,hour}) => {
+        const updatedlogs = logs.map(({id,value,date,hour}) => {
             value = Number(value)
             const newDate = new Date(`${date} ${hour}`)
             const newLog = {
-                _id,
                 id,
                 value,
                 date: formatter(newDate),
@@ -40,12 +39,11 @@ exports.updatelogs = async (req, res) => {
             }
             return newLog
         })
-        const result = await collection.deleteMany({})
-        const newResult = await collection.insertMany(updatedlogs)
+        //const result = await collection.deleteMany({})
+        //const newResult = await collection.insertMany(updatedlogs)
         return res.status(200).json({
             message: 'Logs actualizados correctamente',
-            result,
-            newResult
+            updatedlogs
         })
     }catch (error) {
         console.error(error)
