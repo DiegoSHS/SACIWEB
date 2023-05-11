@@ -31,12 +31,15 @@ exports.updatelogs = async (req, res) => {
         const updatedlogs = logs.map(({id,value,date,hour}) => {
             value = Number(value)
             const newDate = new Date(`${date} ${hour}`)
-            const dates = formatter(newDate, false)
+            const { year, month, day, monthName } = formatter(newDate, false)
             const newLog = {
                 id,
                 value,
                 date: formatter(newDate),
-                ...dates
+                year,
+                month,
+                day,
+                monthName
             }
             return newLog
         })
