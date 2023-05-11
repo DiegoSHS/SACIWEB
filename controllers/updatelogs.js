@@ -45,11 +45,12 @@ exports.updatelogs = async (req, res) => {
             }
             return newLog
         })
-        //const result = await collection.deleteMany({})
-        //const newResult = await collection.insertMany(updatedlogs)
+        const result = await collection.deleteMany({})
+        const newResult = await collection.insertMany(updatedlogs)
         return res.status(200).json({
             message: 'Logs actualizados correctamente',
-            updatedlogs
+            result,
+            newResult
         })
     }catch (error) {
         console.error(error)
