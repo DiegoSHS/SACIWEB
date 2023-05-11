@@ -32,7 +32,7 @@ exports.updatelogs = async (req, res) => {
         const logs = await collection.find({}).toArray()
         const updatedlogs = logs.map(({id,value,date,hour}) => {
             value = Number(value)
-            const newDate = new Date(`${date} ${hour}`)
+            const newDate = new Date(Date.now())
             const { year, month, day, monthName } = formatter(newDate, false)
             const newLog = {
                 id,
