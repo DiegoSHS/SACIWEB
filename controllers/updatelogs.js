@@ -6,6 +6,8 @@ const formatter = (indate, mode = true) => {
         "noNull": indate ? true : false
     }
     const date = begin.isDate && begin.noNull ? indate : new Date(Date.now())
+    const months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
     const padtwo = num => num.toString().padStart(2, '0')
     try {
         if (mode) {
