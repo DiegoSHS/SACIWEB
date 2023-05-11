@@ -11,11 +11,14 @@ const formatter = (indate, mode = true) => {
     const padtwo = num => num.toString().padStart(2, '0')
     try {
         if (mode) {
-            const fullDate = date.toLocaleDateString()
-            const dateReve = fullDate.split('/').reverse()
-            const datePadd = dateReve.map(padtwo).join('-')
-            const fullTime = date.toTimeString().split(' ')
-            return `${datePadd} ${fullTime[0]}`
+            const hour = date.toTimeString().split(' ')[0]
+            const dates = [
+                date.getFullYear(),
+                date.getMonth(),
+                date.getDate(),
+            ]
+            const date = dates.map(padtwo).join('-')
+            return `${date} ${hour}`
         } else {
             const allDates = [date.getFullYear(), date.getMonth(), date.getDate()]
             const [year, month, day] = allDates.map(d => Number(padtwo(d)))
@@ -30,18 +33,14 @@ exports.updatelogs = async (req, res) => {
         const db = dbo.getDb()
         const collection = await db.collection("logs")
         const logs = await collection.find({}).toArray()
-        const updatedlogs = logs.map(({id,value,date,hour}) => {
+        const updatedlogs = logs.map(({ id, value, day, month }) => {
             value = Number(value)
             const newDate = new Date(Date.now())
-            const { year, month, day, monthName } = formatter(newDate, false)
             const newLog = {
                 id,
                 value,
                 date: formatter(newDate),
-                year,
-                month,
-                day,
-                monthName
+                ...formatter(newDate, false)
             }
             return newLog
         })
@@ -52,7 +51,7 @@ exports.updatelogs = async (req, res) => {
             result,
             newResult
         })
-    }catch (error) {
+    } catch (error) {
         console.error(error)
         return res.status(503).json({
             message: `Error al leer la lista de logs: ${error.message}`,
